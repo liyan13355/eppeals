@@ -1,0 +1,14 @@
+<h1>Create Your Awesome Comment</h1>
+
+<%= form_for @comment , url: comments_path do |f| %>
+	<p>
+		<%= f.label :content %><br/>
+		<%= f.text_field :content %><br/>
+	</p>
+
+
+	<p>
+		<%= f.submit %>
+	</p>
+
+	<% end %>
