@@ -28,7 +28,31 @@
   <%= form.text_field :industry %>
 </div>
 
+<div class="text-field">
+  <%= form.label :type_of_lawyer %>
+  <%= form.text_field :type_of_lawyer %>
+</div>
+
+<div class="text-field">
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+</div>
+
+<div class="text-field">
+  <%= form.label :education %>
+  <%= form.text_field :education %>
+</div>
+
+<div class = "file-field">
+   <%= form.label :proof %>
+  <%= form.file_field :proof %>
+</div>  
+
 <div class = "file-field">
    <%= form.label :avatar %>
   <%= form.file_field :avatar %>
-</div>  
+</div> 
+
+<%= form.hidden_field :role, value: :lawyer %>
+
+

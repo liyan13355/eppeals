@@ -11,14 +11,15 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = user_from_params
-    render template: "users/new"
+    @user = User.new
   end
 
   def create
     @user = user_from_params
 
-    if @user.save
+    p "hello"
+
+    if @user.save 
       sign_in @user
       redirect_back_or url_after_create
     else
@@ -46,26 +47,65 @@ class UsersController < ApplicationController
     Clearance.configuration.redirect_url
   end
 
+
+  def user_params
+    params[Clearance.configuration.user_parameter] || Hash.new
+  end
+
   def user_from_params
+    # common params
   	first_name = user_params.delete(:first_name)
   	last_name = user_params.delete(:last_name)
     email = user_params.delete(:email)
     birthday = user_params.delete(:birthday)
     industry = user_params.delete(:industry)
     password = user_params.delete(:password)
+    role = user_params.delete(:role)
 
-    Clearance.configuration.user_model.new(user_params).tap do |user|
-      user.first_name = first_name
-      user.last_name = last_name
-      user.email = email
-      user.birthday = birthday
-      user.industry = industry
-      user.password = password
+    # lawyer params
+    type_of_lawyer = user_params.delete(:type_of_lawyer)
+    description = user_params.delete(:description)
+    education = user_params.delete(:education)
+
+    Clearance.configuration.user_model.new.tap do |user|
+        user.first_name = first_name
+        user.last_name = last_name
+        user.email = email
+        user.birthday = birthday
+        user.password = password
+        user.role = role
+        user.industry = industry
+
+      if role == "lawyer"
+        user.type_of_lawyer = type_of_lawyer
+        user.description = description
+        user.education = education
+      end
     end
   end
 
-  def user_params
-    params[Clearance.configuration.user_parameter] || Hash.new
-  end
+  # def lawyer_from_params
+  #   first_name = user_params.delete(:first_name)
+  #   last_name = user_params.delete(:last_name)
+  #   email = user_params.delete(:email)
+  #   birthday = user_params.delete(:birthday)
+  #   password = user_params.delete(:password)
+  #   type = user_params.delete(:type)
+  #   description = user_params.delete(:description)
+  #   education = user_params.delete(:education)
+
+  #   Clearance.configuration.user_model.new(user_params).tap do |user|
+  #     user.first_name = user_params[:first_name]
+  #     user.last_name = last_name
+  #     user.email = email
+  #     user.birthday = birthday
+  #     user.industry = industry
+  #     user.password = password
+
+
+
+
+  #   end
+  # end
 
 end

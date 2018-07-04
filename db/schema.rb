@@ -42,26 +42,6 @@ ActiveRecord::Schema.define(version: 2018_07_03_084644) do
     t.integer "article_id"
   end
 
-  create_table "lawyers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "email", null: false
-    t.string "type", null: false
-    t.string "avatar"
-    t.date "birthday", null: false
-    t.string "description"
-    t.string "education"
-    t.json "proof", null: false
-    t.boolean "verified", default: false
-    t.string "encrypted_password", limit: 128, null: false
-    t.string "confirmation_token", limit: 128
-    t.string "remember_token", limit: 128, null: false
-    t.index ["email"], name: "index_lawyers_on_email"
-    t.index ["remember_token"], name: "index_lawyers_on_remember_token"
-  end
-
   create_table "queries", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -80,6 +60,11 @@ ActiveRecord::Schema.define(version: 2018_07_03_084644) do
     t.date "birthday"
     t.string "industry"
     t.string "avatar"
+    t.string "type_of_lawyer"
+    t.string "description"
+    t.string "education"
+    t.json "proof"
+    t.boolean "verified", default: false
     t.integer "role", default: 0
     t.string "encrypted_password", limit: 128, null: false
     t.string "confirmation_token", limit: 128
