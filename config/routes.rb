@@ -21,4 +21,7 @@ Rails.application.routes.draw do
  
   root "users#index"
 
+  # Route for Google Omniauth
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
 end
