@@ -1,6 +1,12 @@
 class ArticlesController < ApplicationController
 	def index
 		@articles = Article.order(id: :desc)
+
+		if params[:term]
+			@articles = Article.search_by_title(params[:term])
+		else
+			@articles = Article.all
+		end
 	end
 
 	def new

@@ -3,6 +3,13 @@
 <br/>
 
 <div>
+	<%= form_tag articles_path, method: :get do %>
+  		<%= text_field_tag 'term', params[:term], placeholder: "Search" %>
+  		<%= submit_tag 'Search!' %>
+	<% end %>
+</div>
+
+<div>
 	<% @articles.each do |article| %>
 		
 		<p><strong><%= User.find(article.user_id).first_name %></strong>
