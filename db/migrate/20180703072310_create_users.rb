@@ -8,6 +8,13 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.date :birthday
       t.string :industry
       t.string :avatar 
+
+      t.string :type_of_lawyer
+      t.string :description
+      t.string :education
+      t.json :proof
+      t.boolean :verified, default: false
+
       t.integer :role, default: 0
       t.string :encrypted_password, limit: 128, null: false
       t.string :confirmation_token, limit: 128
