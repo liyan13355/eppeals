@@ -10,6 +10,25 @@
   </head>
 
   <body>
+
+    <% if current_user %>
+      <p>Hello
+      <a href="http://localhost:3000/users/<%=current_user.id%>"><%= current_user.first_name %> 
+      <img src="<%= current_user.avatar.thumb.url %>"></a> </p>
+    <%end%>
+
+
+    <% if signed_in? %>
+        <a> <%= link_to t(".sign_out"), sign_out_path, method: :delete %></a>
+            <% else %>
+              <a><%= link_to t(".sign_in"), sign_in_path %></a>
+            <% end %>
+    <% flash.each do |key, value| -%>
+      <div id="flash" class = "alert alert-warning">
+      <div id="flash_<%= key %>"><%=h value %></div>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
