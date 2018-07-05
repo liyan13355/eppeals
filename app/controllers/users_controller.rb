@@ -14,13 +14,30 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    @articles = Article.where(user_id: current_user.id)
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_update)
+      redirect_to users_path
+    else 
+      render "edit"
+    end
+  end
+
   def create
     @user = user_from_params
 
 
     if @user.save 
       sign_in @user
-      redirect_back_or url_after_create
+      redirect_to users_path
     else
       render template: "users/new"
     end
@@ -55,6 +72,11 @@ class UsersController < ApplicationController
   def user_params
     params[Clearance.configuration.user_parameter] || Hash.new
   end
+
+  def user_update
+    params.require(:user).permit(:email, :password, :first_name, :last_name, :birthday, :industry, :type_of_lawyer, :description, :education, :proof, :avatar, :role)
+  end
+
 
   def user_from_params
     # common params
