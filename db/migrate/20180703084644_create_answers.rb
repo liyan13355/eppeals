@@ -5,7 +5,6 @@ class CreateAnswers < ActiveRecord::Migration[5.2]
       t.timestamps
       t.integer :query_id
       t.integer :user_id
-      t.integer :lawyer_id
       t.string :content
     end
   end

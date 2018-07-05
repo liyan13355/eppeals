@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   def create
     @user = user_from_params
 
-    p "hello"
 
     if @user.save 
       sign_in @user
@@ -25,6 +24,11 @@ class UsersController < ApplicationController
     else
       render template: "users/new"
     end
+  end
+
+  def show
+    @lawyer = User.find(params[:id])
+    @articles = Article.where(user_id: @lawyer.id)
   end
 
   private
@@ -61,6 +65,7 @@ class UsersController < ApplicationController
     industry = user_params.delete(:industry)
     password = user_params.delete(:password)
     role = user_params.delete(:role)
+    avatar = user_params.delete(:avatar)
 
     # lawyer params
     type_of_lawyer = user_params.delete(:type_of_lawyer)
@@ -75,6 +80,7 @@ class UsersController < ApplicationController
         user.password = password
         user.role = role
         user.industry = industry
+        user.avatar = avatar
 
       if role == "lawyer"
         user.type_of_lawyer = type_of_lawyer
