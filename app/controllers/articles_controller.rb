@@ -1,4 +1,3 @@
-
 class ArticlesController < ApplicationController
 	def index
 		@article = Article.order(:id)

@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   enum role:[:user, :superadmin, :lawyer]
   has_many :comments
+  has_many :articles
   has_many :queries
   has_many :articles
 end
