@@ -1,4 +1,4 @@
-class AnswersController < ApplicationController
+class LawyersController < ApplicationController
 	before_action :require_login
 	def index
 	end
