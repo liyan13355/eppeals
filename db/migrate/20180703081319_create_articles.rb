@@ -5,7 +5,7 @@ class CreateArticles < ActiveRecord::Migration[5.2]
     	t.string :title
     	t.string :content
     	t.string :tag
-    	t.integer :lawyer_id
+    	t.integer :user_id
 
     end
   end

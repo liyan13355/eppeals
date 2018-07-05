@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2018_07_03_084644) do
     t.datetime "updated_at", null: false
     t.integer "query_id"
     t.integer "user_id"
-    t.integer "lawyer_id"
     t.string "content"
   end
 
@@ -30,7 +29,7 @@ ActiveRecord::Schema.define(version: 2018_07_03_084644) do
     t.string "title"
     t.string "content"
     t.string "tag"
-    t.integer "lawyer_id"
+    t.integer "user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -38,7 +37,6 @@ ActiveRecord::Schema.define(version: 2018_07_03_084644) do
     t.datetime "updated_at", null: false
     t.string "content"
     t.integer "user_id"
-    t.integer "lawyer_id"
     t.integer "article_id"
   end
 

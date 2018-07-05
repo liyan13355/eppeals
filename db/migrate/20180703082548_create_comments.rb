@@ -5,7 +5,6 @@ class CreateComments < ActiveRecord::Migration[5.2]
       t.timestamps
       t.string :content
       t.integer :user_id
-      t.integer :lawyer_id
       t.integer :article_id
     end
   end
