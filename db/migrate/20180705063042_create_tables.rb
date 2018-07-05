@@ -5,8 +5,8 @@ class CreateTables < ActiveRecord::Migration[5.2]
     create_table "answers", force: :cascade do |t|
 	    t.datetime "created_at", null: false
 	    t.datetime "updated_at", null: false
-	    t.references "query_id"
-	    t.references "user_id"
+	    t.references "query"
+	    t.references "user"
 	    t.string "content"
 	  end
 
@@ -16,15 +16,15 @@ class CreateTables < ActiveRecord::Migration[5.2]
 	    t.string "title"
 	    t.string "content"
 	    t.string "tag"
-	    t.references "user_id"
+	    t.references "user"
 	  end
 
 	  create_table "comments", force: :cascade do |t|
 	    t.datetime "created_at", null: false
 	    t.datetime "updated_at", null: false
 	    t.string "content"
-	    t.references "user_id"
-	    t.references"article_id"
+	    t.references "user"
+	    t.references"article"
 	  end
 
 	  create_table "users", force: :cascade do |t|
@@ -55,7 +55,7 @@ class CreateTables < ActiveRecord::Migration[5.2]
 	    t.string "topic"
 	    t.string "question"
 	    t.string "description"
-	    t.references "user_id"
+	    t.references "user"
 	  end
 
     end
