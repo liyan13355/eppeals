@@ -1,3 +1,5 @@
+<!--this is the display that will show if the user is a lawyer -->
+<div class="lawyer-display">
 <p> LAWYER </p>
 <h2> <%= @lawyer.first_name %> <%= @lawyer.last_name %> </h2>
 <br/>
@@ -10,6 +12,7 @@
 <br/>
 <p> Education: <%= @lawyer.education %> </p>
 <p> Specialisation: <%= @lawyer.type_of_lawyer %> </p>
+<p> Contact: <%= @lawyer.email %></p>
 <br/></div>
 
 <br/><br/>
@@ -21,3 +24,5 @@
 		<strong><a href="http://localhost:3000/articles/<%=x.id%>"> <%= x.title %> </a></strong>
 	<% end %>
 </div>
+</div>
+
