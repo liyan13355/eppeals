@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_04_091450) do
+ActiveRecord::Schema.define(version: 2018_07_05_063042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,11 +18,11 @@ ActiveRecord::Schema.define(version: 2018_07_04_091450) do
   create_table "answers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "query_id_id"
-    t.bigint "user_id_id"
+    t.bigint "query_id"
+    t.bigint "user_id"
     t.string "content"
-    t.index ["query_id_id"], name: "index_answers_on_query_id_id"
-    t.index ["user_id_id"], name: "index_answers_on_user_id_id"
+    t.index ["query_id"], name: "index_answers_on_query_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -31,18 +31,18 @@ ActiveRecord::Schema.define(version: 2018_07_04_091450) do
     t.string "title"
     t.string "content"
     t.string "tag"
-    t.bigint "user_id_id"
-    t.index ["user_id_id"], name: "index_articles_on_user_id_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "content"
-    t.bigint "user_id_id"
-    t.bigint "article_id_id"
-    t.index ["article_id_id"], name: "index_comments_on_article_id_id"
-    t.index ["user_id_id"], name: "index_comments_on_user_id_id"
+    t.bigint "user_id"
+    t.bigint "article_id"
+    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "queries", force: :cascade do |t|
@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 2018_07_04_091450) do
     t.string "topic"
     t.string "question"
     t.string "description"
-    t.bigint "user_id_id"
-    t.index ["user_id_id"], name: "index_queries_on_user_id_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_queries_on_user_id"
   end
 
   create_table "tables", force: :cascade do |t|
