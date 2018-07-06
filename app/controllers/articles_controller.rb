@@ -35,6 +35,10 @@ class ArticlesController < ApplicationController
 	def show
 		@article= Article.find(params[:id])
 		@author = User.find(@article.user_id)
+		@comment = Comment.new
+			
+		@find_comments = Comment.where(article_id: params[:id])
+		@comments = @find_comments.order(id: :desc)
 	end
 
 

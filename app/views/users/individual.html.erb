@@ -1,0 +1,46 @@
+<% if @user.lawyer? %>
+<div class="lawyer-display">
+<p> LAWYER </p>
+<h2> <%= @user.first_name %> <%= @user.last_name %> </h2>
+<br/>
+<img src = "<%=@user.avatar%>">
+<br/><br/><br/><br/>
+<p> <%= @user.description %> </p>
+<br/><hr/>
+
+<div> <h3> Background </h3>
+<br/>
+<p> Education: <%= @user.education %> </p>
+<p> Specialisation: <%= @user.type_of_lawyer %> </p>
+<p> Contact: <%= @user.email %></p>
+<br/></div>
+
+<br/><br/>
+
+<div>
+	<h4>Articles By This Lawyer</h4>
+	<br/>
+	<% @articles.each do |x| %>
+		<strong><a href="http://localhost:3000/articles/<%=x.id%>"> <%= x.title %> </a></strong>
+	<% end %>
+</div>
+</div>
+
+<%else%>
+
+<div class="user-display">
+		<p> PROFILE </p>
+		<div>
+			
+	</div>
+		<h2> <%= @user.first_name%> <%= @user.last_name%> </h2>
+		<br/>
+		<img src = "<%=@user.avatar%>">
+		<br/><br/><br/><hr/>
+		<p> Email: <%= @user.email %></p>
+		<p> Birthday: <%= @user.birthday %></p>
+		<p> Working In: <%= @user.industry %></p>
+
+	</div>
+
+<% end %>

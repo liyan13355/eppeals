@@ -11,14 +11,27 @@ Rails.application.routes.draw do
   end
 
   resources :answers
-  resources :articles
-  resources :comments
+  resources :articles do
+    resources :comments
+  end
   resources :queries
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "users#new", as: "sign_up"
+  get "/users/individual/:id" => "users#individual", as: "individual"
  
   root "users#index"
 
 end
+
+# article#show
+
+# def show
+#   @article = ARticle.find
+#   @comment = Comment.new
+# end
+
+# article show.html.erb
+
+# <%= form_for (@article, @comment) %>
