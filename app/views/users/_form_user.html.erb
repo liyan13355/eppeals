@@ -1,36 +1,38 @@
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, type: 'email' %>
-</div>
+  
 
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-</div>
 
-<div class="text-field">
-  <%= form.label :first_name %>
-  <%= form.text_field :first_name %>
-</div>
 
-<div class="text-field">
-  <%= form.label :last_name %>
-  <%= form.text_field :last_name %>
-</div>
 
-<div class="date-field">
-  <%= form.label :birthday %>
-  <%= form.date_field :birthday %>
-</div>
 
-<div class="text-field">
-  <%= form.label :industry %>
-  <%= form.text_field :industry %>
-</div>
 
-<div class = "file-field">
-   <%= form.label :avatar %>
-  <%= form.file_field :avatar %>
-</div>  
+  <%= form.text_field :email, type: 'email', :class => 'form-default', :placeholder => 'Email' %>
+
+
+  <%= form.password_field :password, type: 'password', :class => 'form-default', :placeholder => 'Password' %>
+
+
+  <%= form.text_field :first_name, :class => 'form-default', :placeholder => 'First Name' %>
+
+
+  <%= form.text_field :last_name, :class => 'form-default', :placeholder => 'Last Name' %>
+
+  
+  <%= form.text_field :birthday, :class => 'form-default', :placeholder => 'Birthday' %>
+  <p class="form-info">Write in DD-MM-YYYY format </p>
+
+
+  <%= form.text_field :industry, :class => 'form-default', :placeholder => 'Occupation' %>
+
+        
+        <p class="form-info avatar-prompt">Upload a profile picture</p>
+      
+        <%= form.file_field :avatar %>
+
 
 <%= form.hidden_field :role, value: :user %>
+
+<div>
+
+<%= form.submit "Submit", :class => 'button', :id => 'sessions-button' %>
+
+</div>

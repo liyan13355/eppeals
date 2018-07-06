@@ -93,6 +93,10 @@
 	margin-right: 100px;
 }
 
+.complete {
+	width: 100%;
+}
+
 .form-info {
 	font-size: 12px;
 	margin-top: 5px;
@@ -110,6 +114,25 @@
 	height: 50px;
 /*	margin-left: 32%;*/
 	margin-top: 30px;
+}
+
+#sessions-button-lawyer {
+	width: 150px;
+	height: 50px;
+/*	margin-left: 32%;*/
+	margin-top: 30px;
+
+}
+
+
+.signup-link {
+	margin-top: 20px;
+}
+
+#partial {
+	width: 150px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
 /*RESPONSIVE SIGNUP (NARROW BREAKPOINT ONLY)*/
