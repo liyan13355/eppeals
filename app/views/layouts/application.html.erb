@@ -20,183 +20,23 @@
 
   <body>
 
-    <!-- NAVBAR -->
+    <% if current_user %>
+      <p>Hello
+      <a href="http://localhost:3000/users"><%= current_user.first_name %> 
+      <img src="<%= current_user.avatar.thumb.url %>"></a> </p>
+    <%end%>
 
-    <div class="navbar-container">
 
-      
-      <!-- LOGO BOX -->
-
-      <div class="logo-container">
-
-        <a href="<%= home_path %>"><img class="logo" src="/logo.png" /></a>
-
-        <a href="<%= home_path %>" class="appname">epeals</span></a>
-
+    <% if signed_in? %>
+        <a> <%= link_to t(".sign_out"), sign_out_path, method: :delete %></a>
+            <% else %>
+              <a><%= link_to t(".sign_in"), sign_in_path %></a>
+            <% end %>
+    <% flash.each do |key, value| -%>
+      <div id="flash" class = "alert alert-warning">
+      <div id="flash_<%= key %>"><%=h value %></div>
       </div>
-
-
-
-      <!-- SEARCH CONTAINER -->
-
-      <div id="search-container">
-
-        <form><input type="text" class="input-form"></form>
-
-        <p class="search-tag">search</p>
-
-      </div>
-
-
-      <!-- LOGIN CONTAINER -->
-
-      <div class="navbar-tag-container" id="login">
-
-        <a href="#" class="navbar-tag">login </a>
-
-      </div>
-
-
-      <!-- SIGN UP CONTAINER -->
-
-      <div class="navbar-tag-container" id="sign-up">
-
-        <a href="/users/new" class="navbar-tag">sign up </a>
-
-      </div>
-
-
-      <!-- SUBMIT A COMPLAINT -->
-
-      <div class="navbar-tag-container" id="complaint">
-
-        <a href="#" class="navbar-tag"><strong>submit a complaint</strong> </a>
-
-      </div>
-
-
-      <!-- ADDITIONAL RESOURCES -->
-
-      <div class="filler-container">
-
-      <div class="navbar-tag-container" id="additional">
-
-        <div id="dropdown-button">
-
-          
-          <div class="dropdown-bars"></div>
-          <div class="dropdown-bars"></div>
-          <div class="dropdown-bars"></div>
-
-
-        </div>
-
-
-      </div>
-
-    </div>
-
-    </div>
-
-
-    <!-- DROPDOWN NAVBAR -->
-
-
-    <div id="dropdown-navbar">
-
-
-      <div id="links-container">
-
-      <div class="dropdown-link" id="search-form-container">
-
-        <form><input type="text" class="search-form"></form>
-
-        <a href="#" class="dropdown-tag">Search</a>
-
-      </div>
-
-
-      <div class="dropdown-link" id="complaint-dropdown">
-
-        <a href="#" class="dropdown-tag">Submit a complaint</a>
-
-      </div>
-
-
-
-      <div class="dropdown-link">
-
-        <a href="#" class="dropdown-tag">articles</a>
-
-      </div>
-
-
-      <div class="dropdown-link">
-
-        <a href="/queries" class="dropdown-tag">queries</a>
-
-      </div>
-
-
-      <div class="dropdown-link" id='login-dropdown'>
-
-        <a href="#" class="dropdown-tag">Login</a>
-
-      </div>
-
-
-      <div class="dropdown-link" id="signup-dropdown">
-
-        <a href="users/new" class="dropdown-tag">Sign up</a>
-
-      </div>
-
-
-
-
-    </div>
-
-
-    </div>
-
-
-    <div class="filler"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-      $("#dropdown-navbar").hide();
-    // $("#filler-mobile").hide();
-
-    $("#dropdown-button").on("click", function(e){
-        // e.preventDefault();
-        $("#dropdown-navbar").toggle();
-        console.log('click');
-
-
-    });
-  </script>
-
-
-
+    <% end %>
 
     <%= yield %>
 

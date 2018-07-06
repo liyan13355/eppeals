@@ -1,0 +1,17 @@
+<h1 class= "question">
+<%= @query.question %>
+</h1>
+
+<p class="date">
+	Submitted <%= time_ago_in_words(@query.created_at) %> ago
+</p>
+
+<p class="description">
+	<%= @query.description %>
+</p>
+
+<p class="topic">
+	<%= @query.topic %>
+</p>
+
+

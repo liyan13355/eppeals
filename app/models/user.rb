@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   include Clearance::User
-  enum role:[:user, :moderator, :superadmin]
+  mount_uploader :avatar, AvatarUploader
+
+  enum role:[:user, :superadmin, :lawyer]
   has_many :comments
+  has_many :articles
   has_many :queries
+  has_many :articles
 end
