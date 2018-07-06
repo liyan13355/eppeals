@@ -1,0 +1,22 @@
+
+
+.top-header {
+	font-size: 60px;
+	font-weight: 400;
+	margin-left: 40px;
+/*	border: 1px dotted gray;*/
+}
+
+.main-questions-container {
+/*	border: 1px dotted gray;*/
+	margin-left: 40px;
+}
+
+#main-questions-page {
+	margin-left: 0px;
+}
+
+#main-answers-page {
+	margin-left: 40px;
+	width: 60%;
+}

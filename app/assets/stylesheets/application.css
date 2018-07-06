@@ -13,3 +13,435 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+	margin: 0px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+/*button style*/
+
+.button {
+	border: 2px solid #6c738d;
+	box-sizing: border-box;
+/*	background-color: #9d9eb0;*/
+	padding: 3px;
+/*	width: 100px;*/
+	margin-top: 15px;
+	font-size: 15px;
+	font-weight: 600;
+	color: #6c738d;
+	text-align: center;
+	border-radius: 7px;
+}
+
+/*page header style*/
+
+.page-header {
+	font-size: 50px;
+}
+
+.button:hover {
+	background-color: #6c738d;
+	color: white;
+	cursor: pointer;
+}
+
+#seemore {
+	width: 90px;
+	margin-bottom: 20px;
+
+}
+
+#readmore {
+	width: 100px;
+	border: 2px solid white;
+	color: white;
+	margin-left: 10px;
+	margin-bottom: 20px;
+
+}
+
+#readmore:hover {
+	border: 2px solid lightgray;
+	color: lightgray;
+
+}
+
+#main-quiz {
+	width: 150px;
+	margin-bottom: 8px;
+	margin-top: 7px;
+	padding: 10px;
+	font-size: 15px;
+}
+
+
+.navbar-container {
+ 	width: 100%;
+ 	background-color: white;
+ 	box-shadow: 0.5px 0.5px 3px 0.5px rgba(0, 0, 0, 0.1);
+ 	height: 90px;
+ 	box-sizing: border-box;
+ 	position: fixed;
+ 	display: flex;
+/* 	border: 1px dotted gray;*/
+ 	justify-content: space-between;
+ 	z-index: 3;
+}
+
+.logo-container {
+	width: 300px;
+	display: flex;
+/*	border: 1px dotted gray;*/
+	margin-left: 10px;
+}
+
+.logo-container a {
+	text-decoration: none;
+	color: black;
+}
+
+.logo-container:hover {
+	opacity: 0.7;
+	transition: 0.2s;
+	cursor: pointer;
+}
+
+.logo {
+/*	border: 1px dotted gray;*/
+	width: 60px;
+	height: 60px;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+.appname {
+	font-size: 45px;
+	letter-spacing: 3px;
+	margin-top: 10px;
+}
+
+#search-container {
+	width: 200px;
+	margin-left: 20px;
+/*	border: 1px dotted gray;*/
+	display: flex;
+	margin-right: 50px;
+}
+
+.input-form {
+	width: 150px;
+	height: 20px;
+/*	border: 1px solid lightgray;*/
+	margin-top: 30px;
+}
+
+.navbar-tag {
+	font-size: 15px;
+	text-transform: uppercase;
+	margin-bottom: 0px;
+	margin-right: 10px;
+	margin-top: 32px;
+	text-decoration: none;
+	color: black;
+/*	border: 1px dotted gray;*/
+}
+
+.search-tag {
+	font-size: 15px;
+	text-transform: uppercase;
+	margin-bottom: 0px;
+	margin-left: 10px;
+	margin-top: 32px;
+	text-decoration: none;
+	color: black;
+}
+
+.navbar-tag:hover {
+	color: gray;
+}
+
+.navbar-tag-container {
+	width: 100px;
+/*	border: 1px dotted gray;*/
+	display: flex;
+}
+
+.filler-container {
+	display: flex;
+	align-content: flex-end;
+/*	border: 1px dotted gray;*/
+}
+
+#complaint {
+	width: 200px;
+}
+
+#additional {
+	width: 60px;
+	display: flex;
+/*	align-content: flex-end;*/
+	margin-left: 30px;
+	flex-grow: 1;
+}
+
+
+
+#dropdown-button {
+	width: 60px;
+/*	height: 75px;*/
+	margin-right: 5px;
+/*	border: 1px dotted gray;*/
+	margin-top: 15px;
+	height: 60px;
+
+
+}
+
+.dropdown-button:hover {
+	background-color: #9d9eb0;
+
+}
+
+.dropdown-bars {
+	width: 50px;
+	height: 7px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+	background-color: black;
+}
+
+.icon-small {
+	width: 20px;
+	height: 20px;
+	margin-top: 33px;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+/*DROPDOWN NAVBAR*/
+
+#dropdown-navbar {
+	width: 100%;
+	background-color: #9d9eb0;
+	display: flex;
+	flex-wrap: wrap;
+	height: 150px;
+	justify-content: flex-end;
+	position: fixed;
+	z-index: 2;
+}
+
+#links-container {
+	display: flex;
+	margin-top: 100px;
+}
+
+.dropdown-link {
+	width: 100px;
+/*	border: 1px dotted gray;*/
+	height: 20px;
+	display: flex;
+
+
+}
+
+.dropdown-tag {
+	color: black;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.dropdown-link-search {
+	width: 200px;
+	height: 100px;
+/*	border: 1px dotted gray;*/
+	margin-top: 100px;
+}
+
+.search-form {
+	width: 150px;
+	height: 20px;
+/*	border: 0.5px solid lightgray;*/
+	margin-right: 10px;
+}
+
+#search-form-container {
+	width: 250px;
+	display: flex;
+}
+
+
+/*FOOTER STYLES*/
+
+.footer {
+	width: 100%;
+	background-color: black;
+/*	height: 265px;*/
+	margin-top: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	padding-bottom: 50px;
+	padding-top: 50px;
+}
+
+.footer-content-container {
+	width: 33%;
+/*	border: 1px dotted gray;*/
+	box-sizing: border-box;
+	padding-left: 40px;
+	padding-top: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.allcaps-footer {
+	color: white;
+	font-size: 13px;
+	letter-spacing: 0.5px;
+/*	text-transform: uppercase;*/
+	color: white;
+}
+
+.footer-link {
+	color: white;
+	font-size: 15px;
+	margin-top: 0px;
+	text-decoration: none;
+	letter-spacing: 0.5px;
+	margin-bottom: 15px;
+	color: gray;
+	font-size: 14px;
+}
+
+.footer-link:hover {
+	color: white;
+}
+
+.footer-content-container img:hover {
+	opacity: 0.7;
+}
+
+.footer-logo {
+	width: 200px;
+	margin-top: 0px;
+	margin-bottom: 20px;
+}
+
+.footer-section-header {
+	font-weight: 400;
+	color: white;
+	text-decoration: none;
+	margin-bottom: 25px;
+	font-size: 17px;
+}
+
+#footer-divider {
+	border-top: 1px dotted white;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	width: 100px;
+
+}
+
+/*NAVBAR RESPONSIVE BREAKPOINTS*/
+
+
+@media(min-width: 1060px) {
+	#dropdown-container {
+		display: none;
+	}
+	#search-form-container {
+		display: none;
+	}
+	#login-dropdown {
+		display: none;
+	}
+	#signup-dropdown {
+		display: none;
+	}
+	#complaint-dropdown{ 
+		display: none
+	}
+}
+
+@media(max-width: 1059px) {
+
+	#search-container {
+		display: none;
+	}
+
+	#login {
+		display: none;
+	}
+
+	#sign-up {
+		display: none;
+	}
+
+}
+
+@media(min-width: 701px) {
+	#complaint-dropdown {
+		display: none;
+	}
+}
+
+
+@media(max-width: 700px) {
+	#dropdown-navbar {
+		justify-content: flex-start;
+		height: 300px;
+		padding-bottom: 20px;
+	}
+	#links-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		margin-left: 10px;
+		margin-top: 80px;
+	}
+
+	.dropdown-link {
+		margin-top: 20px;
+	}
+	#complaint-dropdown {
+		width: 300px;
+	}
+	#complaint {
+		display: none;
+	}
+
+	.footer-logo {
+		width: 150px;
+	}
+
+}
+
+@media(max-width: 550px) {
+
+	.footer-content-container {
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	#third {
+		order: 0;
+	}
+
+	#second {
+		order: 1;
+	}
+
+	#first {
+		order: 2;
+	}
+
+	.footer {
+		padding-bottom: 0px;
+	}
+}
+
+

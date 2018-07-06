@@ -5,8 +5,17 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application'%>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
+
   </head>
 
   <body>
@@ -30,5 +39,52 @@
     <% end %>
 
     <%= yield %>
+
+   <!--  FOOTER HERE -->
+
+    <div class="footer">
+
+      <div class="footer-content-container" id="first">
+
+        <a href="#"><img class="footer-logo" src="/logo_white.png" /></a>
+
+        <div class="divider-horizontal" id="footer-divider"></div>
+
+        <p class="footer-link">Copyright epeals 2018</p>
+
+        <div class="divider-horizontal" id="footer-divider"></div>
+
+
+      </div>
+
+      <div class="footer-content-container" id="second">
+
+        <a href="#" class="footer-section-header">About epeals</a>
+        <a href="#" class="footer-link">Ask a question</a>
+        <a href="#" class="footer-link">Submit a complaint</a>
+        <a href="#" class="footer-link">Read lawyer articles</a>
+        <a href="#" class="footer-link">Browse popular topics</a>
+
+
+      </div>
+
+
+      <div class="footer-content-container" id="third">
+
+        <a href="#" class="footer-section-header">Using the site</a>
+
+        <a href="#" class="footer-link">Login</a>
+        <a href="#" class="footer-link">Sign Up</a>
+
+
+
+      </div>
+      
+
+
+
+    </div>
+
+
   </body>
 </html>
