@@ -1,0 +1,129 @@
+
+
+.sign-up-container {
+	margin: auto;
+	width: 450px;
+/*	border: 1px dotted gray;*/
+	margin-top: 40px;
+	margin-bottom: 50px;
+}
+
+.sign-up-container h1 {
+	font-size: 40px;
+	font-weight: 400;
+}
+
+
+
+/*Tabs styles*/
+
+.tabs-container {
+	width: 100%;
+/*	border: 1px dotted gray;*/
+	display: flex;
+}
+
+.tab {
+	height: 50px;
+	width: 150px;
+	background-color: #6c738d;
+	color: white;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	margin-right: 5px;
+}
+
+.tab:hover {
+	background-color: #d7d7de;
+	color: white;
+	cursor: pointer;
+}
+
+.tab p {
+
+}
+
+.selected {
+	background-color: #6c738d;
+}
+
+.deselected {
+	background-color: #9d9eb0;
+}
+
+#user-signup-tab {
+
+}
+
+#lawyer-signup-tab {
+	background-color: #9d9eb0;
+	
+}
+
+#lawyer-signup-tab:hover {
+	background-color: #d7d7de;
+	
+}
+
+
+
+/*Signup box styles*/
+
+.form-box {
+	width: 100%;
+/*	border: 1px dotted gray;*/
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.form-default {
+	width: 200px;
+	height: 30px;
+	font-size: 16px;
+	border: 0px;
+	border-bottom: 1px solid black;
+	margin-top: 20px;
+	margin-right: 20px;
+
+}
+
+
+.full-width {
+	margin-right: 100px;
+}
+
+.form-info {
+	font-size: 12px;
+	margin-top: 5px;
+	color: red;
+}
+
+.avatar-prompt {
+	font-size: 15px;
+	color: black;
+	margin-top: 40px;
+}
+
+#sessions-button {
+	width: 150px;
+	height: 50px;
+/*	margin-left: 32%;*/
+	margin-top: 30px;
+}
+
+/*RESPONSIVE SIGNUP (NARROW BREAKPOINT ONLY)*/
+
+@media(max-width: 486px) {
+	.sign-up-container {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 20px;
+	}
+
+	.form-default {
+		width: 100%;
+	}
+}
+
+

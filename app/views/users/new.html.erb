@@ -1,0 +1,152 @@
+
+
+
+
+<div class="sign-up-container">
+
+
+	<h1>Sign Up</h1>
+
+
+	<div class="tabs-container">
+
+
+		<div class="tab" id="user-signup-tab">
+
+			<p>User sign up</p>
+
+
+		</div>
+
+		<div class="tab" id="lawyer-signup-tab">
+
+			<p>Lawyer sign up</p>
+
+		</div>
+
+
+	</div>
+
+	<div class="form-box" id="user-form">
+
+
+		<%= form_for @user do |form| %>
+
+
+			<%= form.text_field :first_name, :class => 'form-default', :placeholder => 'First name' %>
+
+			<%= form.text_field :last_name, :class => 'form-default', :placeholder => 'Last name' %>
+
+			<%= form.text_field :email, :class => 'form-default', :placeholder => 'Email address' %>
+
+			<%= form.text_field :industry, :class => 'form-default', :placeholder => 'Occupation' %>
+
+			<%= form.text_field :birthday, :class => 'form-default full-width', :placeholder => 'Date of birth' %>
+
+				<p class="form-info">Write in DD-MM-YYYY format </p>
+
+
+				<p class="form-info avatar-prompt">Upload a profile picture</p>
+			
+			<%= form.file_field :avatar %>
+
+
+
+			<div>
+     			
+     			<%= form.submit "Submit", :class => 'button', :id=> 'sessions-button' %>
+
+    		</div>
+
+	
+
+
+
+
+
+		<% end %>
+
+
+		</div>
+
+
+		<div class="form-box" id="lawyer-form">
+
+
+		<%= form_for @user do |form| %>
+
+
+			<%= form.text_field :first_name, :class => 'form-default', :placeholder => 'First name' %>
+
+			<%= form.text_field :last_name, :class => 'form-default', :placeholder => 'Last name' %>
+
+			<%= form.text_field :email, :class => 'form-default', :placeholder => 'Email address' %>
+
+			<%= form.text_field :last_name, :class => 'form-default', :placeholder => 'Type of law practiced' %>
+
+			<%= form.text_field :last_name, :class => 'form-default', :placeholder => 'University attended' %>
+
+			<%= form.text_field :birthday, :class => 'form-default full-width', :placeholder => 'Date of birth' %>
+
+				<p class="form-info">Write in DD-MM-YYYY format </p>
+
+				<p class="form-info avatar-prompt">Upload supporting documents</p>
+			
+			<%= form.file_field :avatar, :multiple => true  %>
+
+				<p class="form-info">We use these to verify your legal practice </p>	
+
+
+				<p class="form-info avatar-prompt">Upload a profile picture</p>
+			
+			<%= form.file_field :avatar %>
+
+
+
+			<div>
+     			
+     			<%= form.submit "Submit", :class => 'button', :id=> 'sessions-button' %>
+
+    		</div>
+
+
+		<% end %>
+
+
+
+		</div>
+
+
+	</div>
+
+</div>
+
+
+<script>
+
+	$("#lawyer-form").hide();
+
+	$("#lawyer-signup-tab").on("click", function(e){
+
+		$("#lawyer-form").show();
+		$("#user-form").hide();
+		$("#user-signup-tab").css('background-color', '#9d9eb0');
+		$("#lawyer-signup-tab").css('background-color', '#6c738d');
+
+	});
+
+	$("#user-signup-tab").on("click", function(e){
+
+		$("#lawyer-form").hide();
+		$("#user-form").show();
+		$("#user-signup-tab").css('background-color', '#6c738d');
+		$("#lawyer-signup-tab").css('background-color', '#9d9eb0');
+
+	});
+
+</script>
+
+
+
+
+

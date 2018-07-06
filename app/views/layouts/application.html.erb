@@ -5,11 +5,246 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application'%>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,800" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
+
   </head>
 
   <body>
+
+    <!-- NAVBAR -->
+
+    <div class="navbar-container">
+
+      
+      <!-- LOGO BOX -->
+
+      <div class="logo-container">
+
+        <a href="<%= home_path %>"><img class="logo" src="/logo.png" /></a>
+
+        <a href="<%= home_path %>" class="appname">epeals</span></a>
+
+      </div>
+
+
+
+      <!-- SEARCH CONTAINER -->
+
+      <div id="search-container">
+
+        <form><input type="text" class="input-form"></form>
+
+        <p class="search-tag">search</p>
+
+      </div>
+
+
+      <!-- LOGIN CONTAINER -->
+
+      <div class="navbar-tag-container" id="login">
+
+        <a href="#" class="navbar-tag">login </a>
+
+      </div>
+
+
+      <!-- SIGN UP CONTAINER -->
+
+      <div class="navbar-tag-container" id="sign-up">
+
+        <a href="/users/new" class="navbar-tag">sign up </a>
+
+      </div>
+
+
+      <!-- SUBMIT A COMPLAINT -->
+
+      <div class="navbar-tag-container" id="complaint">
+
+        <a href="#" class="navbar-tag"><strong>submit a complaint</strong> </a>
+
+      </div>
+
+
+      <!-- ADDITIONAL RESOURCES -->
+
+      <div class="filler-container">
+
+      <div class="navbar-tag-container" id="additional">
+
+        <div id="dropdown-button">
+
+          
+          <div class="dropdown-bars"></div>
+          <div class="dropdown-bars"></div>
+          <div class="dropdown-bars"></div>
+
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+    </div>
+
+
+    <!-- DROPDOWN NAVBAR -->
+
+
+    <div id="dropdown-navbar">
+
+
+      <div id="links-container">
+
+      <div class="dropdown-link" id="search-form-container">
+
+        <form><input type="text" class="search-form"></form>
+
+        <a href="#" class="dropdown-tag">Search</a>
+
+      </div>
+
+
+      <div class="dropdown-link" id="complaint-dropdown">
+
+        <a href="#" class="dropdown-tag">Submit a complaint</a>
+
+      </div>
+
+
+
+      <div class="dropdown-link">
+
+        <a href="#" class="dropdown-tag">articles</a>
+
+      </div>
+
+
+      <div class="dropdown-link">
+
+        <a href="/queries" class="dropdown-tag">queries</a>
+
+      </div>
+
+
+      <div class="dropdown-link" id='login-dropdown'>
+
+        <a href="#" class="dropdown-tag">Login</a>
+
+      </div>
+
+
+      <div class="dropdown-link" id="signup-dropdown">
+
+        <a href="users/new" class="dropdown-tag">Sign up</a>
+
+      </div>
+
+
+
+
+    </div>
+
+
+    </div>
+
+
+    <div class="filler"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+      $("#dropdown-navbar").hide();
+    // $("#filler-mobile").hide();
+
+    $("#dropdown-button").on("click", function(e){
+        // e.preventDefault();
+        $("#dropdown-navbar").toggle();
+        console.log('click');
+
+
+    });
+  </script>
+
+
+
+
     <%= yield %>
+
+   <!--  FOOTER HERE -->
+
+    <div class="footer">
+
+      <div class="footer-content-container" id="first">
+
+        <a href="#"><img class="footer-logo" src="/logo_white.png" /></a>
+
+        <div class="divider-horizontal" id="footer-divider"></div>
+
+        <p class="footer-link">Copyright epeals 2018</p>
+
+        <div class="divider-horizontal" id="footer-divider"></div>
+
+
+      </div>
+
+      <div class="footer-content-container" id="second">
+
+        <a href="#" class="footer-section-header">About epeals</a>
+        <a href="#" class="footer-link">Ask a question</a>
+        <a href="#" class="footer-link">Submit a complaint</a>
+        <a href="#" class="footer-link">Read lawyer articles</a>
+        <a href="#" class="footer-link">Browse popular topics</a>
+
+
+      </div>
+
+
+      <div class="footer-content-container" id="third">
+
+        <a href="#" class="footer-section-header">Using the site</a>
+
+        <a href="#" class="footer-link">Login</a>
+        <a href="#" class="footer-link">Sign Up</a>
+
+
+
+      </div>
+      
+
+
+
+    </div>
+
+
   </body>
 </html>

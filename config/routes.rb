@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :queries
   resources :users
 
-root "users#index"
+root "welcome#index", as: 'home'
 
 end
