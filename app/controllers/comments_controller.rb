@@ -4,19 +4,16 @@ class CommentsController < ApplicationController
 		@comment = Comment.order(:id)
 	end
 
-
-	def new
-		@comment = Comment.new
-		render template: "comments/new"
-	end
-
 	def create
-		@comment = Comment.new(comment_params)
+		# @article_id = Article.find(params[:article_id]).id
+		# @user = current_user.id	
+		@comment = current_user.comments.new(comment_params)
+		@comment.article_id = params[:article_id]
 		if @comment.save
-			redirect_to @comment
-
+			redirect_to article_path(params[:article_id])
 		else
-			render "new"
+			@comment.errors
+			flash[:notice] = "Sorry, there is a temporary technical issue with our comments section."
 		end
 	end
 

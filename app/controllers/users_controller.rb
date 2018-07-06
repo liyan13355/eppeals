@@ -48,6 +48,11 @@ class UsersController < ApplicationController
     @articles = Article.where(user_id: @lawyer.id)
   end
 
+  def individual
+    @user=User.find(params[:id])
+    @articles = Article.where(user_id: @user.id)
+  end
+
   private
 
   def avoid_sign_in
