@@ -19,6 +19,8 @@
   </head>
 
   <body>
+    <!-- The bottom link to homepage should be epeals logo -->
+    <p> <a href = "http://localhost:3000"> Epeals </a></p>
 
     <% if current_user %>
       <p>Hello
@@ -36,6 +38,11 @@
       <div id="flash" class = "alert alert-warning">
       <div id="flash_<%= key %>"><%=h value %></div>
       </div>
+    <% end %>
+
+    <% if signed_in? && current_user.lawyer? && current_user.verified == true %>
+      <p> <a href= "http://localhost:3000/articles/new"> Write A Legal Article </a></p>
+
     <% end %>
 
     <%= yield %>

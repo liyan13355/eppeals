@@ -30,6 +30,7 @@
 			<br/>
 			<% @articles.each do |x| %>
 				<strong><a href="http://localhost:3000/articles/<%=x.id%>"> <%= x.title %> </a></strong>
+				<br/>
 			<% end %>
 			</div>
 		<% end %>
