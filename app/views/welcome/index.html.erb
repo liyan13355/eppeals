@@ -10,7 +10,7 @@
 
       <div class="subhead-container">
 
-         <h3>Find about your employee rights</h3>
+         <h3>Find out about your employee rights</h3>
 
        </div>
 
@@ -39,7 +39,7 @@
 
     <div class="section-header">
 
-      <a href="/articles">Featured Articles</a>
+      <a href="http://localhost:3000/articles">Featured Articles</a>
 
     </div>
 
@@ -51,27 +51,29 @@
 
       <div class="news-item-container">
 
-        <div class="topic-tag">Time off</div>
+        <div class="topic-tag"> <%= Article.find(2).tag %></div>
 
         <img class="news-item-img" src="/annualleave.jpg" />
 
-        <h2>Annual leave you have as an employee in Malaysia</h2>
+        <h2><a href="http://localhost:3000/articles/2"><%= Article.find(2).title %></a></h2>
 
-        <p class="author-tag">By <strong>Name Surname </strong></p>
+        <p class="author-tag">By <strong><%= User.find(Article.find(2).user_id).first_name %> <%= User.find(Article.find(2).user_id).last_name %> </strong></p>
 
       </div>
+
+      
 
       <!-- News Item 2 -->
 
       <div class="news-item-container">
 
-        <div class="topic-tag">Wages</div>
+        <div class="topic-tag"><%=Article.find(3).tag%></div>
 
         <img class="news-item-img" src="/ringgit.jpg" />
 
-        <h2>If your boss refuses to pay you in Malaysia, what can you do?</h2>
+        <h2><a href="http://localhost:3000/articles/3"><%= Article.find(3).title %></a></h2>
 
-        <p class="author-tag">By <strong>Name Surname </strong></p>
+        <p class="author-tag">By <strong><%= User.find(Article.find(3).user_id).first_name %> <%= User.find(Article.find(3).user_id).last_name %></strong></p>
 
       </div>
 
@@ -79,13 +81,13 @@
 
       <div class="news-item-container">
 
-        <div class="topic-tag">Contracts</div>
+        <div class="topic-tag"><%=Article.find(4).tag%></div>
 
         <img class="news-item-img" src="/contract.png" />
 
-        <h2>Non-compete and non-solicitation clauses in contracts</h2>
+        <h2><a href="http://localhost:3000/articles/4"><%= Article.find(4).title %></a></h2>
 
-        <p class="author-tag">By <strong>Name Surname </strong></p>
+        <p class="author-tag">By <strong><%= User.find(Article.find(4).user_id).first_name %> <%= User.find(Article.find(4).user_id).last_name %> </strong></p>
 
       </div>
 

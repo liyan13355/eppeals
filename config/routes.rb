@@ -20,6 +20,10 @@ Rails.application.routes.draw do
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "users#new", as: "sign_up"
   get "/users/individual/:id" => "users#individual", as: "individual"
+
+  #under queries because the legal acts and layman's explanations are hardcoded onto pages
+ get "/wages" => "queries#wages", as: "wages"
+
  
   root "welcome#index"
 

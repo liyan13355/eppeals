@@ -3,7 +3,7 @@ class QueriesController < ApplicationController
 		@query = Query.order(:id)
 	end
 
-
+ 
 	def new
 		@query = Query.new
 		render template: "queries/new"
