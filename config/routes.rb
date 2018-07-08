@@ -25,10 +25,14 @@ Rails.application.routes.draw do
   #under queries because the legal acts and layman's explanations are hardcoded onto pages
  get "/wages" => "queries#wages", as: "wages"
 
+ get "/timeoff" => "queries#timeoff", as: "timeoff"
+
  
   root "welcome#index"
 
 post "answers/upvote"
+
+post "queries/timeoff_new"
 
 end
 

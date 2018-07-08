@@ -10,13 +10,11 @@ class AnswersController < ApplicationController
 		@answer = Answer.new(answer_params)
 		@answer.user_id = current_user.id
 		@answer.query_id = params[:query_id]
-		if @answer.save
-			redirect_to wages_path
+		@answer.save
 
-		else
-			flash[:notice] = "Sorry, your answer was not successfully submitted. Try again? :)"
-
-		end
+		#not rerendering the page before because maybe it can be done with js/ajax? Difficult
+		#to use with rails in controller because multiple pages utilise the same methods
+		
 	end
 
 	def upvote
@@ -24,10 +22,8 @@ class AnswersController < ApplicationController
 		@answer = Answer.find(params[:answer_id])
 		@upvote_count = @answer.upvotes
 
-		if @answer.update(upvotes: (@upvote_count + 1))
+		@answer.update(upvotes: (@upvote_count + 1))
 		
-			redirect_to wages_path
-		end
 
 	end
 
