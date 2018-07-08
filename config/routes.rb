@@ -10,11 +10,12 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
-  resources :answers
   resources :articles do
     resources :comments
   end
-  resources :queries
+  resources :queries do
+    resources :answers
+  end
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
 
  
   root "welcome#index"
+
+post "answers/upvote"
 
 end
 
