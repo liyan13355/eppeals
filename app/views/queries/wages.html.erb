@@ -102,7 +102,7 @@ shall be paid by the employer to the employee not later than the day on which su
 <hr/>
 <% @queries.each do |query|%>
 	<h5 class= "User"> Submitted by 
-	<a href="/users/individual/<%=query.user_id%>"><%= User.find(query.user_id).first_name %></a>
+	<a href="/users/individual/<%=query.user_id%>"><%= User.find(query.user_id).first_name %> <img src = "<%=User.find(query.user_id).avatar.thumb.url%>"/></a>
 	</h5>
 
 	<p class="date">
@@ -157,7 +157,7 @@ shall be paid by the employer to the employee not later than the day on which su
 
 	<% @answers.each do |answer| %>
 
-		<h5> Submitted by <a href="/users/individual/<%=answer.user_id%>"> <%= User.find(answer.user_id).first_name %> </a>
+		<h5> Submitted by <a href="/users/individual/<%=answer.user_id%>"> <%= User.find(answer.user_id).first_name %> <img src="<%= User.find(answer.user_id).avatar.thumb.url %>"/></a>
 
 			<!-- this tick only appears if user is a lawyer -->
 			<% if User.find(answer.user_id).lawyer? %>

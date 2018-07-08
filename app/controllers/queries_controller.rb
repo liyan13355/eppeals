@@ -13,10 +13,25 @@ class QueriesController < ApplicationController
 		@answer = Answer.new
 	end
  
-	# def new
-	# 	@query = Query.new
-	# 	render template: "queries/new"
-	# end
+ 	def timeoff
+ 		@query = Query.new
+		@find_queries = Query.where(topic: "Time Off")
+		@queries = @find_queries.order(id: :desc)
+
+		@answer = Answer.new
+	end
+
+	def timeoff_new
+		@query = current_user.queries.new(query_params)
+		@query.topic = "Time Off"
+		if @query.save
+			redirect_to timeoff_path
+
+		else
+			flash[:notice] = "Sorry, your query was not successfully submitted. Try again? :)"
+
+		end
+	end
 
 	def create
 		@query = current_user.queries.new(query_params)
