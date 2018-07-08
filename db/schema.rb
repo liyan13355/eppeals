@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_05_063042) do
+ActiveRecord::Schema.define(version: 2018_07_08_095943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2018_07_05_063042) do
     t.bigint "query_id"
     t.bigint "user_id"
     t.string "content"
+    t.integer "upvotes", default: 0
     t.index ["query_id"], name: "index_answers_on_query_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
   end
@@ -45,26 +46,6 @@ ActiveRecord::Schema.define(version: 2018_07_05_063042) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "lawyers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "email", null: false
-    t.string "type", null: false
-    t.string "avatar"
-    t.date "birthday", null: false
-    t.string "description"
-    t.string "education"
-    t.json "proof", null: false
-    t.boolean "verified", default: false
-    t.string "encrypted_password", limit: 128, null: false
-    t.string "confirmation_token", limit: 128
-    t.string "remember_token", limit: 128, null: false
-    t.index ["email"], name: "index_lawyers_on_email"
-    t.index ["remember_token"], name: "index_lawyers_on_remember_token"
-  end
-
   create_table "queries", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -72,6 +53,7 @@ ActiveRecord::Schema.define(version: 2018_07_05_063042) do
     t.string "question"
     t.string "description"
     t.bigint "user_id"
+    t.integer "answers_count", default: 0
     t.index ["user_id"], name: "index_queries_on_user_id"
   end
 

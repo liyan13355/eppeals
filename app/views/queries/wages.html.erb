@@ -1,0 +1,201 @@
+<h1> Payment of Wages </h1>
+
+<h4> Employment Act 1955 </h4>
+
+
+
+<div><p> 18. Wage period </p>
+
+<p>(1) A contract of service shall specify a wage period not exceeding one month.</p>
+
+<p>(2) If in any contract of service no wage period is specified the wage period shall for the purposes of the contract be deemed to be one month.</p></div>
+
+<div><h3> WHAT THIS MEANS  </h3></div>
+<div> <!--Insert layman's terms here --></div>
+
+<br/><br/><br/>
+
+
+
+
+<div><p>19. Time of payment of wages</p>
+
+<p>Every employer shall pay to each of his employees not later than the seventh day after the last day of any wage period the wages, less lawful deductions, earned by such employee during such wage period:</p>
+
+<p>Provided that if the Director General is satisfied that payment within such time is not reasonably practicable, he may, on the application of the employer, extend the time of payment by such number of days as he thinks fit.</p></div>
+
+<div><h3> WHAT THIS MEANS  </h3></div>
+<div> <!--Insert layman's terms here --></div>
+
+<br/><br/><br/>
+
+
+
+<div><p> 20. Payment on normal termination of contract</p>
+
+<p>The wages, less lawful deductions, earned by but not yet paid to an employee whose contract of service terminates in accordance with section 11 (1) or of section 12 shall be paid to such employee not later than the day on which such contract of service so terminates.</p></div>
+
+<div><h3> WHAT THIS MEANS  </h3></div>
+<div> <!--Insert layman's terms here --></div>
+<br/><br/><br/>
+
+
+
+
+<div><p>21. Payment on termination of contract in special circumstances and on breach of contract</p>
+
+<p>(1) Where an employer terminate the contract of service of an employee without notice in accordance with section 13 (1) or (2) and section 14(1) (a) --</p>
+
+<p>(a) the wages, less any deductions which the employer is entitled to make under section 24, earned by such employee up to and including the day immediately preceding the day on which the termination of the contract of service takes effect; and</p>
+<p>(b) in addition, where the employer terminates the contract of services under section 13 (1), the indemnity payable to the employee under that subsection,
+shall be paid by the employer to the employee not later than the day on which such contract of service is so terminated.</p>
+
+<p>(2) Where an employee terminates his contract of service with an employer without notice in accordance with section 13 (1) or (2) or section 14 (3), the wages, less any deductions which the employer is entitled to make under section 24, earned by such employee up to and including the day immediately preceding the day on which the termination of the contract of service takes effect shall be paid by the employer to the employee not later than the third day after the day on which the contract of service is so terminated.</p></div>
+
+<div><h3> WHAT THIS MEANS  </h3></div>
+<div> <!--Insert layman's terms here --></div>
+
+<br/><br/><hr/>
+
+
+
+<!--Queries Start Here -->
+
+
+<!-- if the user is signed in, they can see this option -->
+
+<% if signed_in? %>
+	<!--if the user clicks on this div below, a popup of a form will appear for them to write their query -->
+
+	<div> <h4> Write Your Own Query </h4></div>
+
+	<!-- this is the div that should be naturally hidden until the current user clicks on div above. Maybe this can pop up above the page, and the rest of the page will somewhat fade behind it, lightbox-like style? -->
+
+	<div>
+
+	<%= form_for [@query] do |f| %>
+		<p>
+				<%= f.label :"question Title"%><br/> 
+				<%= f.text_field :question %><br/>
+
+				<%= f.label :description %><br/> 
+				<%= f.text_field :description %><br/>
+
+				<% f.hidden_field :user_id, :value => current_user.id %>
+				<% f.hidden_field :topic, :value => "Payment of Wages" %>
+
+			</p>
+			<p> 		<%= f.submit %> </p>
+
+	<% end %>
+
+	</div>
+
+<% end %>
+
+<!--regarding the above form for query creation, I think it would be good to implement some kind of ajax so that it updates the db immediately and maybe the page will not have to refresh? So that the comment appears immediately below. I don't know if this is a thing. -->
+
+<!-- Queries section starts here --> 
+
+<div>
+<h1>Queries</h1>
+<hr/>
+<% @queries.each do |query|%>
+	<h5 class= "User"> Submitted by 
+	<a href="/users/individual/<%=query.user_id%>"><%= User.find(query.user_id).first_name %></a>
+	</h5>
+
+	<p class="date">
+		Submitted <%= time_ago_in_words(query.created_at) %> ago
+	</p>
+
+	<!--question title -->
+	<h3 class="question"> <strong>
+		<%= query.question %> </strong>
+	</h3>
+
+	<!--description of question -->
+
+	<p> 
+		<%= query.description %>
+	</p>
+
+	<!-- this will be a div that only signed in users can see and click on so that they can answer the question -->
+	<% if signed_in? %>
+
+		<br/><br/><br/>
+		<div> Do You Know The Answer? </div>
+
+		<!-- this form is hidden until the above div is clicked on -->
+
+		<div>
+
+			<%= form_for [query, @answer] do |f| %>
+				<p>
+						<%= f.label :"Your Answer"%><br/> 
+						<%= f.text_field :content %><br/>
+						<% f.hidden_field :user_id, :value => current_user.id %>
+						<% f.hidden_field :query_id, :value => query.id %>
+
+					</p>
+					<p> 		<%= f.submit %> </p>
+
+			<% end %>
+
+	</div>
+
+	<% end %>
+
+
+	
+
+	<!-- All answers pertaining to each query will now be listed beneath the query. -->
+
+	<h3> Top Answers </h3>
+
+	<% @answers = Answer.where(query_id: query.id).order(upvotes: :desc) %>
+
+	<% @answers.each do |answer| %>
+
+		<h5> Submitted by <a href="/users/individual/<%=answer.user_id%>"> <%= User.find(answer.user_id).first_name %> </a>
+
+			<!-- this tick only appears if user is a lawyer -->
+			<% if User.find(answer.user_id).lawyer? %>
+
+				<img src = "/affirmed.png" style="height: 30px; width: 30px"/>
+
+			<% end %> 
+		
+		</h5>
+
+		<!-- content of answer -->
+
+		<div>
+			
+			<p> <%= answer.content %> </p>
+
+		<!-- this is the upvote button. For now, it is a submit button with a value -->
+			<%= form_for answer, url: answers_upvote_path, method: :post do |x| %>
+
+	  		
+	  			<input type="hidden", value="<%=answer.id%>", name="answer_id">
+	  			<input type="submit", value="Upvote">
+	  		
+			
+			<% end %>
+
+		<!--this shows the number of times the answer has been upvoted. Maybe it needs a thumbs up symbol or something next to it..or! the upvot button can be a thumbs up symbol and the upvote count will be next to it. -->
+
+		<%= answer.upvotes %> </p>
+
+		</div>
+	<%end%>
+
+		<br/><br/><br/><hr/>
+<% end %>
+
+</div>
+
+
+
+

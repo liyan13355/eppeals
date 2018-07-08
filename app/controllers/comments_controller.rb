@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 	def index
 		@comment = Comment.order(:id)
 	end
-
+ 
 	def create
 		# @article_id = Article.find(params[:article_id]).id
 		# @user = current_user.id	

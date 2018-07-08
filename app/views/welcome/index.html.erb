@@ -87,6 +87,8 @@
 
         <h2><a href="http://localhost:3000/articles/4"><%= Article.find(4).title %></a></h2>
 
+        <!--<h2> <#%= # link_to '#{Article.find(4).title}', article_path('#{Article.find(4).title}') %></h2> -->
+
         <p class="author-tag">By <strong><%= User.find(Article.find(4).user_id).first_name %> <%= User.find(Article.find(4).user_id).last_name %> </strong></p>
 
       </div>
@@ -115,122 +117,57 @@
 
     <!-- question 1 -->
 
-    <div class="questions-container">
+      <div class="questions-container">
+
+    <% @top_queries.each do |query| %>
+
+        <p class="question-topic"><%= query.topic %></p>
+
+        <h2 class="question-title"><%= query.question%></h2>
+
+        <div class="question-submission-info">
+
+            <a href="/users/individual/<%=query.user_id%>" class="question-submission-info-item">Submitted by <strong> <%= User.find(query.user_id).first_name%></strong></a>
+
+            <p class="question-submission-info-item">Submitted <%=query.created_at %></p>
 
 
-      <p class="question-topic">Wages</p>
-
-      <h2 class="question-title">I haven’t been paid in two months. What can I do?</h2>
-
-      <div class="question-submission-info">
-
-          <a href="#" class="question-submission-info-item">Submitted by <strong> username</strong></a>
-
-          <p class="question-submission-info-item">Submitted @created_at</p>
-
-
-
-      </div>
-
-
-      <div class="answer-container">
-
-        <p id="top-answer">Top Answer</p>
-
-        <a href="#" class="answer">The Tempor sitas reptatur? Qui doleni id moPerore plibust reici conetur? Awead sada</a>
-
-        <div class="answer-submission-info">
-
-          <a href="#" class="answer-submission-info-item">Submitted by <strong> username</strong></a>
 
         </div>
 
-        <div class="button" id="seemore">See More</div>
 
-        <div class="divider-horizontal"></div>
+        <div class="answer-container">
+
+          <p id="top-answer">Top Answer</p>
+
+          <% @top_answer = Answer.where(query_id: query.id).order(upvotes: :desc).limit(1)  %>
+            <% @top_answer.each do |a|%>
+
+          <a href="#" class="answer"><%= a.content %></a>
+
+          <div class="answer-submission-info">
+
+            <a href="/users/individual/<%=a.user_id%>" class="answer-submission-info-item">Submitted by <strong> <%=User.find(a.user_id).first_name%></strong></a>
+
+          </div>
+
+          <div class="button" id="seemore">See More</div>
+
+          <% end %>
+
+          <div class="divider-horizontal"></div>
 
 
-      </div>
+        </div>
 
+      <% end %>
 
       
 
           <!-- question 2 -->
 
 
-      <p class="question-topic">Appeals</p>
-
-      <h2 class="question-title">How long does the appeals process take?</h2>
-
-      <div class="question-submission-info">
-
-          <a href="#" class="question-submission-info-item">Submitted by <strong> username</strong></a>
-
-          <p class="question-submission-info-item">Submitted @created_at</p>
-
-
-
-      </div>
-
-
-      <div class="answer-container">
-
-        <p id="top-answer">Top Answer</p>
-
-        <a href="#" class="answer">The Tempor sitas reptatur? Qui doleni id moPerore plibust reici conetur? Awead sada</a>
-
-        <div class="answer-submission-info">
-
-          <a href="#" class="answer-submission-info-item">Submitted by <strong> username</strong></a>
-
-        </div>
-
-        <div class="button" id="seemore">See More</div>
-
-        <div class="divider-horizontal"></div>
-
-
-
-
-      </div>
-
-
-      <!-- question 3 -->
-
-
-      <p class="question-topic">Harrassment</p>
-
-      <h2 class="question-title">What can I do about my boss repeatedly harrassing me?</h2>
-
-      <div class="question-submission-info">
-
-          <a href="#" class="question-submission-info-item">Submitted by <strong> username</strong></a>
-
-          <p class="question-submission-info-item">Submitted @created_at</p>
-
-
-
-      </div>
-
-
-      <div class="answer-container">
-
-        <p id="top-answer">Top Answer</p>
-
-        <a href="#" class="answer">The Tempor sitas reptatur? Qui doleni id moPerore plibust reici conetur? Awead sada</a>
-
-        <div class="answer-submission-info">
-
-          <a href="#" class="answer-submission-info-item">Submitted by <strong> username</strong></a>
-
-        </div>
-
-        <div class="button" id="seemore">See More</div>
-
-<!--         <div class="divider-horizontal"></div>
- -->
-
-
+     
 
       </div>
 
