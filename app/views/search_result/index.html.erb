@@ -1,13 +1,31 @@
 <% if @article_results != [] %>
+
+<div class="content-container">
 	<h2>Results in Articles</h2>
+
+	
 	<% @article_results.each do |x| %>
-		<p><a href="/articles/<%=x.searchable_id%>"><%= x.content%></a></p>
+
+		<div class="result-container">
+			<a class="search-result" href="/articles/<%=x.searchable_id%>"><%= x.content%></a>
+		</div>
 	<% end %>
 <% end %>
+</div>
 
 <% if @query_results != [] %>
+
+	<div class="content-container">
 	<h2>Results in Queries</h2>
 	<% @query_results.each do |x| %>
-		<p><a href="/queries/<%=x.searchable_id%>"><%= x.content%></a></p>
+
+	<div class="result-container">
+		
+		<a class="search-result" href="/queries/<%=x.searchable_id%>"><%= x.content%></a>
+	</div>
+	<br/>
+	<div class="divider-horizontal"></div>
+	<br/>
 	<% end %>
 <% end %>
+</div>

@@ -213,6 +213,7 @@
 .questions-container {
 /*	border: 1px dotted gray;*/
 	width: 100%;
+	margin-bottom: 30px;
 
 }
 
@@ -231,22 +232,35 @@
 	color: gray;
 	font-size: 10px;
 	font-weight: 600;
-	margin-bottom: -15px;
+	margin-bottom: 6px;
 
 }
 
 .question-title {
 	margin-left: 60px;
 /*	border: 1px dotted gray;*/
-	margin-bottom: 10px
-	margin-top: 0px;
+	margin-bottom: 20px
+	margin-top: 20px;
+	height: 50px;
+	font-size: 30px;
 
+}
+
+a.question-title {
+	margin-bottom: 30px;
+	text-decoration: none;
+	margin-top: 20px;
+	color: black;
+	font-size: 30px;
+	font-weight: 800;
 }
 
 .question-submission-info {
 	display: flex;
 	flex-direction: row;
 	margin-left: 60px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 /*	border: 1px dotted gray;*/
 }
 
@@ -268,7 +282,12 @@
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 20px;
-	margin-top: 20px;
+	margin-top: 0px;
+	background-color: #f1f1f2;
+}
+
+.answer-container p {
+	margin-left: 5px;
 }
 
 #top-answer {
@@ -279,6 +298,7 @@
 	margin-bottom: 5px;
 	font-size: 10px;
 	font-weight: 600;
+	margin-left: 5px;
 }
 
 .answer {
@@ -288,9 +308,10 @@
 }
 
 
-.answer a {
+a.answer {
 	text-decoration: none;
 	color: black;
+	margin-left: 5px;
 }
 
 .answer a:hover {
@@ -313,6 +334,7 @@
 	font-size: 10px;
 	margin-top: 10px;
 	margin-bottom: 0px;
+	margin-left: 5px;
 }
 
 .profile-img {
@@ -493,6 +515,10 @@
 
 	.topics-item-container p {
 		font-size: 14px;
+	}
+
+	.no-answer {
+		margin-left: 30px;
 	}
 
 

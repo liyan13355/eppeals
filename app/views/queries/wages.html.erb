@@ -63,7 +63,9 @@
 
 	<div class="content-container"> 
 
-		<h4 class="legal-act-header"> Post a query </h4>
+		<h2>Ask a question</h2>
+
+		<h4 class="legal-act-header"> Post your query here </h4>
 
 	<!-- this is the div that should be naturally hidden until the current user clicks on div above. Maybe this can pop up above the page, and the rest of the page will somewhat fade behind it, lightbox-like style? -->
 
@@ -142,6 +144,11 @@
 		
 	</div>
 
+	<div class="answer-question-button">
+
+
+	</div>
+
 	<!-- this will be a div that only signed in users can see and click on so that they can answer the question -->
 	<% if signed_in? %>
 
@@ -155,7 +162,7 @@
 			<div class="answer-form">
 				<%= form_for [query, @answer] do |f| %>
 					<p>
-							<%= f.label :"Type your answer in the box below", :class => 'form-topper'%><br/> 
+							<%= f.label :"Type your answer below", :class => 'form-topper'%><br/> 
 							<%= f.text_field :content %><br/>
 							<% f.hidden_field :user_id, :value => current_user.id %>
 							<% f.hidden_field :query_id, :value => query.id %>
@@ -180,16 +187,32 @@
 	<!-- All answers pertaining to each query will now be listed beneath the query. -->
 
 
-	<br/>
+<!-- 	<br/> -->
+
+
 
 
 	<h2 class = "top-answers"> Top answers to this question </h2>
 
-
-
 	<% @answers = Answer.where(query_id: query.id).order(upvotes: :desc) %>
 
+	<% if @answers.count == 0 %>
+
+		<p class="no-answer"> No answers yet. </p>
+
+		<div class="divider-horizontal"></div>
+		<div class="divider-horizontal"></div>
+		<div class="divider-horizontal"></div>
+
+		<%end%>
+
+		<br/>
+
+
+
 	<% @answers.each do |answer| %>
+
+
 
 <div class="answer-container">
 
@@ -234,23 +257,37 @@
 
 		</div>
 
+
+
+			<div class="divider-horizontal"></div>
+
+
+
+<!-- 		<div class="divider-horizontal"></div>
 		<div class="divider-horizontal"></div>
-		<div class="divider-horizontal"></div>
-		<div class="divider-horizontal"></div>
+		<div class="divider-horizontal"></div> -->
 
 </div>
+
+	
+
 
 
 
 		
 <%end%>
 
+	<% if @answers.count > 0 %>
+
+		<div class="divider-horizontal"></div>
+		<div class="divider-horizontal"></div>
+		<div class="divider-horizontal"></div>
+
+	<% end %>
+
 
 
 <% end %>
-
-
-
 
 
 
