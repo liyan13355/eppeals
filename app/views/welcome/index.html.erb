@@ -10,7 +10,7 @@
 
       <div class="subhead-container">
 
-         <h3>Find about your employee rights</h3>
+         <h3>Find out about your employee rights</h3>
 
        </div>
 
@@ -39,7 +39,7 @@
 
     <div class="section-header">
 
-      <a href="/articles">Featured Articles</a>
+      <a href="http://localhost:3000/articles">Featured Articles</a>
 
     </div>
 
@@ -51,27 +51,29 @@
 
       <div class="news-item-container">
 
-        <div class="topic-tag">Time off</div>
+        <div class="topic-tag"> <%= Article.find(1).tag %></div>
 
         <img class="news-item-img" src="/annualleave.jpg" />
 
-        <h2>Annual leave you have as an employee in Malaysia</h2>
+        <h2><a href="http://localhost:3000/articles/2"><%= Article.find(1).title %></a></h2>
 
-        <p class="author-tag">By <strong>Name Surname </strong></p>
+        <p class="author-tag">By <strong><%= User.find(Article.find(1).user_id).first_name %> <%= User.find(Article.find(1).user_id).last_name %> </strong></p>
 
       </div>
+
+      
 
       <!-- News Item 2 -->
 
       <div class="news-item-container">
 
-        <div class="topic-tag">Wages</div>
+        <div class="topic-tag"><%=Article.find(2).tag%></div>
 
         <img class="news-item-img" src="/ringgit.jpg" />
 
-        <h2>If your boss refuses to pay you in Malaysia, what can you do?</h2>
+        <h2><a href="http://localhost:3000/articles/3"><%= Article.find(2).title %></a></h2>
 
-        <p class="author-tag">By <strong>Name Surname </strong></p>
+        <p class="author-tag">By <strong><%= User.find(Article.find(2).user_id).first_name %> <%= User.find(Article.find(2).user_id).last_name %></strong></p>
 
       </div>
 
@@ -79,13 +81,15 @@
 
       <div class="news-item-container">
 
-        <div class="topic-tag">Contracts</div>
+        <div class="topic-tag"><%=Article.find(3).tag%></div>
 
         <img class="news-item-img" src="/contract.png" />
 
-        <h2>Non-compete and non-solicitation clauses in contracts</h2>
+        <h2><a href="http://localhost:3000/articles/3"><%= Article.find(3).title %></a></h2>
 
-        <p class="author-tag">By <strong>Name Surname </strong></p>
+        <!--<h2> <#%= # link_to '#{Article.find(3).title}', article_path('#{Article.find(3).title}') %></h2> -->
+
+        <p class="author-tag">By <strong><%= User.find(Article.find(3).user_id).first_name %> <%= User.find(Article.find(3).user_id).last_name %> </strong></p>
 
       </div>
 
@@ -113,122 +117,57 @@
 
     <!-- question 1 -->
 
-    <div class="questions-container">
+      <div class="questions-container">
+
+    <% @top_queries.each do |query| %>
+
+        <p class="question-topic"><%= query.topic %></p>
+
+        <h2 class="question-title"><%= query.question%></h2>
+
+        <div class="question-submission-info">
+
+            <a href="/users/individual/<%=query.user_id%>" class="question-submission-info-item">Submitted by <strong> <%= User.find(query.user_id).first_name%></strong></a>
+
+            <p class="question-submission-info-item">Submitted <%=query.created_at %></p>
 
 
-      <p class="question-topic">Wages</p>
-
-      <h2 class="question-title">I haven’t been paid in two months. What can I do?</h2>
-
-      <div class="question-submission-info">
-
-          <a href="#" class="question-submission-info-item">Submitted by <strong> username</strong></a>
-
-          <p class="question-submission-info-item">Submitted @created_at</p>
-
-
-
-      </div>
-
-
-      <div class="answer-container">
-
-        <p id="top-answer">Top Answer</p>
-
-        <a href="#" class="answer">The Tempor sitas reptatur? Qui doleni id moPerore plibust reici conetur? Awead sada</a>
-
-        <div class="answer-submission-info">
-
-          <a href="#" class="answer-submission-info-item">Submitted by <strong> username</strong></a>
 
         </div>
 
-        <div class="button" id="seemore">See More</div>
 
-        <div class="divider-horizontal"></div>
+        <div class="answer-container">
+
+          <p id="top-answer">Top Answer</p>
+
+          <% @top_answer = Answer.where(query_id: query.id).order(upvotes: :desc).limit(1)  %>
+            <% @top_answer.each do |a|%>
+
+          <a href="#" class="answer"><%= a.content %></a>
+
+          <div class="answer-submission-info">
+
+            <a href="/users/individual/<%=a.user_id%>" class="answer-submission-info-item">Submitted by <strong> <%=User.find(a.user_id).first_name%></strong></a>
+
+          </div>
+
+          <div class="button" id="seemore">See More</div>
+
+          <% end %>
+
+          <div class="divider-horizontal"></div>
 
 
-      </div>
+        </div>
 
+      <% end %>
 
       
 
           <!-- question 2 -->
 
 
-      <p class="question-topic">Appeals</p>
-
-      <h2 class="question-title">How long does the appeals process take?</h2>
-
-      <div class="question-submission-info">
-
-          <a href="#" class="question-submission-info-item">Submitted by <strong> username</strong></a>
-
-          <p class="question-submission-info-item">Submitted @created_at</p>
-
-
-
-      </div>
-
-
-      <div class="answer-container">
-
-        <p id="top-answer">Top Answer</p>
-
-        <a href="#" class="answer">The Tempor sitas reptatur? Qui doleni id moPerore plibust reici conetur? Awead sada</a>
-
-        <div class="answer-submission-info">
-
-          <a href="#" class="answer-submission-info-item">Submitted by <strong> username</strong></a>
-
-        </div>
-
-        <div class="button" id="seemore">See More</div>
-
-        <div class="divider-horizontal"></div>
-
-
-
-
-      </div>
-
-
-      <!-- question 3 -->
-
-
-      <p class="question-topic">Harrassment</p>
-
-      <h2 class="question-title">What can I do about my boss repeatedly harrassing me?</h2>
-
-      <div class="question-submission-info">
-
-          <a href="#" class="question-submission-info-item">Submitted by <strong> username</strong></a>
-
-          <p class="question-submission-info-item">Submitted @created_at</p>
-
-
-
-      </div>
-
-
-      <div class="answer-container">
-
-        <p id="top-answer">Top Answer</p>
-
-        <a href="#" class="answer">The Tempor sitas reptatur? Qui doleni id moPerore plibust reici conetur? Awead sada</a>
-
-        <div class="answer-submission-info">
-
-          <a href="#" class="answer-submission-info-item">Submitted by <strong> username</strong></a>
-
-        </div>
-
-        <div class="button" id="seemore">See More</div>
-
-<!--         <div class="divider-horizontal"></div>
- -->
-
-
+     
 
       </div>
 
@@ -266,7 +205,7 @@
 
         <div class="button-container">
         
-          <div class="button" id="readmore">Read more</div>
+          <div class="button" id="readmore"><a href= "/wages">Read more</a></div>
 
         </div>
 
@@ -342,7 +281,7 @@
 
         <div class="button-container">
 
-          <div class="button" id="readmore">Read more</div>
+          <div class="button" id="readmore"><a href= "/timeoff">Read more</a></div>
 
         </div>
 

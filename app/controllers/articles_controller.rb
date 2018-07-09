@@ -1,8 +1,7 @@
 class ArticlesController < ApplicationController
 	def index
-		@article = Article.order(:id)
+		@articles = Article.order(id: :desc)
 	end
-
 
 	def new
 		if (!current_user || !current_user.lawyer? || !current_user.verified == true)
