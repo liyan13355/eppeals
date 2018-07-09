@@ -35,6 +35,16 @@ body {
 	border-radius: 7px;
 }
 
+#readmore a {
+	color: white;
+	text-decoration: none;
+}
+
+#readmore a:hover {
+	color: #d7d7de;;
+	text-decoration: none;
+}
+
 /*page header style*/
 
 .page-header {

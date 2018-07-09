@@ -1,39 +1,88 @@
-<h1>Article</h1>
 
-<h3 class= "author"> 
-	
-		<img src="<%= @author.avatar.thumb.url %>">
 
-	By 
-	<strong> <a href="http://localhost:3000/users/<%=@author.id%>"><%= @author.first_name %> </a></strong>
-	<%= @author.last_name %>
-</h3>
+
+<img class="article-dom-img" src="/ringgit2.jpg" />
+
 
 <% if signed_in? && current_user.id == @author.id %>
-	<a href = "http://localhost:3000/articles/<%=@article.id%>/edit"> Update Article </a>
+	<a href = "/articles/<%=@article.id%>/edit"> Update Article </a>
 
 	<%= form_tag("/articles/#{@article.id}", method: :delete) do %>
 	    			<input type="submit" value="Delete Article" />
 	<% end %>   
 <%end%>
 
-<h1 class= "title">
-<%= @article.title %>
-</h1>
 
-<p class="date">
-	Submitted <%= time_ago_in_words(@article.created_at) %> ago
+<!-- HEADLINE -->
+
+
+<h1 class= "headline"><%= @article.title %></h1>
+
+
+
+<!-- BYLINE -->
+
+<div class = "byline-container">
+
+
+	<img src="<%= @author.avatar.thumb.url %>"> 
+
+	<p class= "byline"> By <strong> <a href="/users/<%=@author.id%>"><%= @author.first_name %> </a><a href="/users/<%=@author.id%>"><%= @author.last_name %></strong></a></p>
+
+</div>
+
+
+<!-- ARTICLE INFO CONTAINER -->
+
+
+<div class="article-submission-info">
+
+		<p class="article-submission-info-item">
+			Submitted <%= time_ago_in_words(@article.created_at) %> ago
+		</p>
+
+		<p class="article-submission-info-item">
+			<%= @article.content %>
+		</p>
+
+		<p class="article-submission-info-item">
+			Tag: <%= @article.tag %>
+		</p>
+
+</div>
+
+
+<div class="article-container">
+
+<% if @article.id == 2 %>
+
+<p class="body-text"><strong>Let’s begin by sitting back and imagining two scenarios:</strong>
+
+Scenario 1: Taking the elevator up to the floor your office is on, lukewarm coffee in your hand, you smile a little as you’ll finally be paid for the last three months of work. You haven’t been paid for three months, and your boss promised you the money this month, all in one go. To you surprise, your boss is waiting for you at your cubible. “I’m sorry, Jimmy, your pay will have to wait a week,” said your boss.
+
+<br/>
+<br/>
+
+Scenario 2: You hate your company you’re working for now, and you’ve been thinking of leaving for the past few weeks. Lo and behold, another company makes you a better offer; higher pay, better benefits, all the bells and whistles. You resign, and begin working at the new company. Wait a minute, your previous company still owes you half a month’s wages, and they refuse to pay you.
+
+<br/>
+<br/>
+
+What in tarnation? In both cases, you’re broke, and this is also the proverbial straw that broke the camel’s back. Is there anything you can do?
+
+
 </p>
 
-<p class="content">
-	<%= @article.content %>
-</p>
+</div>
 
-<p class="tag">
-	Tag: <%= @article.tag %>
-</p>
 
-<hr/><br/><br/>
+<% end %>
+
+
+<!-- Body text below: -->
+
+
+
 
 <% if signed_in? %>
 <div> 
