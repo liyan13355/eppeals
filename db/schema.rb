@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 2018_07_08_095943) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
+  create_table "authentications", force: :cascade do |t|
+    t.string "uid"
+    t.string "token"
+    t.string "provider"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_authentications_on_user_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -45,6 +55,7 @@ ActiveRecord::Schema.define(version: 2018_07_08_095943) do
     t.index ["article_id"], name: "index_comments_on_article_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
+
 
   create_table "lawyers", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -64,6 +75,15 @@ ActiveRecord::Schema.define(version: 2018_07_08_095943) do
     t.string "remember_token", limit: 128, null: false
     t.index ["email"], name: "index_lawyers_on_email"
     t.index ["remember_token"], name: "index_lawyers_on_remember_token"
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
+
   end
 
   create_table "queries", force: :cascade do |t|
@@ -102,4 +122,5 @@ ActiveRecord::Schema.define(version: 2018_07_08_095943) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
+  add_foreign_key "authentications", "users"
 end
