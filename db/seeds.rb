@@ -6,20 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 User.create(first_name: 'Regular Joe', last_name: 'Orange', email: 'orange@gmail.com', birthday: '1990-04-21', industry:
-	'agriculture', avatar:'hungrycaterpillar.jpeg', role:'user', password:'password')
+	'agriculture', avatar:'//hungrycaterpillar.jpeg', role:'user', password:'password')
 
 User.create(first_name: 'Superadmin', last_name: 'Is Hungry', email: 'hungry@gmail.com', birthday: '1990-04-21', industry:
-	'administration', avatar:'hungrycaterpillar.jpeg', role:'superadmin', password:'password')
+	'administration', avatar:'/hungrycaterpillar.jpeg', role:'superadmin', password:'password')
 
 User.create(first_name: 'Lawyerly', last_name: 'Green', email: 'green@gmail.com', birthday: '1980-04-21', industry:
-	'legal', avatar:'hungrycaterpillar.jpeg', role:'lawyer', password:'password', type_of_lawyer:'general employment', description:'I have been working in the employment industry for 20 over years now. I specialise primarily in appeals.', education:'Universiti Malaya', verified: true)
+	'legal', avatar:'/hungrycaterpillar.jpeg', role:'lawyer', password:'password', type_of_lawyer:'general employment', description:'I have been working in the employment industry for 20 over years now. I specialise primarily in appeals.', education:'Universiti Malaya', verified: true)
 
 User.create(first_name: 'Seriously', last_name: 'Pink', email: 'pink@gmail.com', birthday: '1980-04-21', industry:
-	'legal', avatar:'hungrycaterpillar.jpeg', role:'lawyer', password:'password', type_of_lawyer:'I specialise in women\'s rights within the employment sector', description:'Most of my legal matters relate to maternity leave and sexual harassment claims.', education:'National University of Singapore', verified: true)
+	'legal', avatar:'/hungrycaterpillar.jpeg', role:'lawyer', password:'password', type_of_lawyer:'I specialise in women\'s rights within the employment sector', description:'Most of my legal matters relate to maternity leave and sexual harassment claims.', education:'National University of Singapore', verified: true)
 
 User.create(first_name: 'The Mayor', last_name: 'Of Your Town', email: 'mayo@gmail.com', birthday: '1980-04-21', industry:
-	'legal', avatar:'hungrycaterpillar.jpeg', role:'lawyer', password:'password', type_of_lawyer:'General Employment', description:'I work full time as the Mayor but law, specifically general employment is a passion of mine. Let me help you.', education:'Passed the CLP', verified: true)
+	'legal', avatar:'/hungrycaterpillar.jpeg', role:'lawyer', password:'password', type_of_lawyer:'General Employment', description:'I work full time as the Mayor but law, specifically general employment is a passion of mine. Let me help you.', education:'Passed the CLP', verified: true)
 
 
 
