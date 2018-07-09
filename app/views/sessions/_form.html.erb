@@ -1,0 +1,44 @@
+
+<%= form_for :session, url: session_path do |form| %>
+
+      <%= form.text_field :email, type: 'email', :class => 'form-default', :placeholder => 'Email' %>
+
+        <%= form.password_field :password, type: 'password', :class => 'form-default', :placeholder => 'Password' %>
+
+
+
+<div>
+
+  <%= form.submit "Login", :class => 'button', :id => 'sessions-button' %>
+
+</div>
+
+
+  <div class="filler-small"></div>
+
+  <p>For Users Only:</p>
+    <%= link_to "Sign In using Google", "/auth/google_oauth2", :class => 'button', :id => 'google' %>
+
+
+    <div class="filler-small"></div>
+    <div class="filler-small"></div>
+
+
+    <div class="divider-horizontal signin-divider"></div>
+
+  
+  <p class="disclaimer"><strong>Lawyers:</strong> Please use our normal sign in form as your account will not work with Google</p>
+  <div class="other-links">
+
+    <div class="divider-horizontal"></div>
+    <% if Clearance.configuration.allow_sign_up? %>
+      <p class="answer"> Don't have an account? <strong><%= link_to t(".sign_up"), sign_up_path %></strong> </p>
+    <% end %>
+
+    <div class="divider-horizontal"></div>
+
+    <div class="filler-small"></div>
+
+    <strong><%= link_to t(".forgot_password"), new_password_path, :class => "answer" %></strong>
+  </div>
+<% end %>

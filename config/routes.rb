@@ -29,7 +29,7 @@ Rails.application.routes.draw do
  get "/timeoff" => "queries#timeoff", as: "timeoff"
 
  
-  root "welcome#index"
+  root "welcome#index", as: "home"
 
 post "answers/upvote"
 
