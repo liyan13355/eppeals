@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
   <head>
     <title>Eppeals</title>
@@ -19,6 +19,8 @@
   </head>
 
   <body>
+    <!-- The bottom link to homepage should be epeals logo -->
+    <p> <a href = "http://localhost:3000"> Epeals </a></p>
 
     
 
@@ -301,6 +303,11 @@
 
 
 
+    <% if signed_in? && current_user.lawyer? && current_user.verified == true %>
+      <p> <a href= "http://localhost:3000/articles/new"> Write A Legal Article </a></p>
+
+    <% end %>
+
 
     <%= yield %>
 
@@ -310,7 +317,7 @@
 
       <div class="footer-content-container" id="first">
 
-        <a href="#"><img class="footer-logo" src="/logo_white.png" /></a>
+        <a href="/"><img class="footer-logo" src="/logo_white.png" /></a>
 
         <div class="divider-horizontal" id="footer-divider"></div>
 
@@ -326,7 +333,7 @@
         <a href="#" class="footer-section-header">About epeals</a>
         <a href="#" class="footer-link">Ask a question</a>
         <a href="#" class="footer-link">Submit a complaint</a>
-        <a href="#" class="footer-link">Read lawyer articles</a>
+        <a href="/articles" class="footer-link">Read lawyer articles</a>
         <a href="#" class="footer-link">Browse popular topics</a>
 
 
@@ -337,8 +344,8 @@
 
         <a href="#" class="footer-section-header">Using the site</a>
 
-        <a href="#" class="footer-link">Login</a>
-        <a href="#" class="footer-link">Sign Up</a>
+        <a href="/sign_in" class="footer-link">Login</a>
+        <a href="/sign_up" class="footer-link">Sign Up</a>
 
 
 

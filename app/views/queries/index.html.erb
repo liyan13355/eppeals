@@ -1,6 +1,5 @@
-
-<h1 class="top-header">Questions</h1>
-
+<h1 class="top-header">Top Questions</h1>
+ 
 
 
 <div class="main-questions-container">
@@ -10,7 +9,63 @@
     <!-- Will use loop here to display each question and also pagination after backend more complete -->
 
 <!-- QUESTIONS (TO BE REPLACED WITH LOOP AND PAGINATION) -->
-    <div class="questions-container">
+      <% @top_queries.each do |query| %>
+       <div class="questions-container">
+
+
+        <p class="question-topic" id="main-questions-page"><%= query.topic %></p>
+
+        <h2 class="question-title" id="main-questions-page"><%= query.question%></h2>
+
+        <div class="question-submission-info" id="main-questions-page">
+
+            <a href="/users/individual/<%=query.user_id%>" class="question-submission-info-item">Submitted by <strong><%= User.find(query.user_id).first_name%></strong> <img src = "<%=User.find(query.user_id).avatar.thumb.url%>"></a>
+
+            <p class="question-submission-info-item">Submitted <%=query.created_at %></p>
+
+        </div>
+
+
+      <div class="answer-container" id="main-answers-page">
+
+          <p id="top-answer">Top Answer</p>
+
+            <% @top_answer = Answer.where(query_id: query.id).order(upvotes: :desc).limit(1)  %>
+            <% @top_answer.each do |a|%>
+              <a href="#" class="answer">
+                  <%= a.content %>
+              </a>
+
+              <div class="answer-submission-info">
+
+                <a href="/users/individual/<%=a.user_id%>" class="answer-submission-info-item">Submitted by <strong> <img src = "<%=User.find(a.user_id).avatar.thumb.url%>"/> 
+
+                  <%=User.find(a.user_id).first_name%>
+                  
+                  <% if User.find(a.user_id).lawyer? %>
+
+                    <img src = "/affirmed.png" style="height: 30px; width: 30px"/>
+
+                  <% end %> 
+
+                </strong></a>
+
+              </div>
+             <% end %> 
+
+          <div class="button" id="seemore">See More</div>
+
+          <div class="divider-horizontal"></div>
+
+
+        </div>
+
+      </div>
+
+      <% end %>
+
+
+     <!--  <div class="questions-container">
 
 
       <p class="question-topic" id="main-questions-page">Wages</p>
@@ -89,7 +144,6 @@
 
   </div>
 
-
       <div class="questions-container">
 
 
@@ -168,46 +222,7 @@
 
   </div>
 
-      <div class="questions-container">
-
-
-      <p class="question-topic" id="main-questions-page">Wages</p>
-
-      <h2 class="question-title" id="main-questions-page">I haven’t been paid in two months. What can I do?</h2>
-
-      <div class="question-submission-info" id="main-questions-page">
-
-          <a href="#" class="question-submission-info-item">Submitted by <strong> username</strong></a>
-
-          <p class="question-submission-info-item">Submitted @created_at</p>
-
-
-
-      </div>
-
-
-    <div class="answer-container" id="main-answers-page">
-
-        <p id="top-answer">Top Answer</p>
-
-        <a href="#" class="answer">The Tempor sitas reptatur? Qui doleni id moPerore plibust reici conetur? Awead sada And add some more content here maybe it will appear like this yep that would be good.</a>
-
-        <div class="answer-submission-info">
-
-          <a href="#" class="answer-submission-info-item">Submitted by <strong> username</strong></a>
-
-        </div>
-
-        <div class="button" id="seemore">See More</div>
-
-        <div class="divider-horizontal"></div>
-
-
-      </div>
-
-  </div>
-
-
+ -->
 
 
 

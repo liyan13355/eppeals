@@ -1,21 +1,47 @@
 class QueriesController < ApplicationController
 	def index
-		@query = Query.order(:id)
+
+		@top_queries = Query.featured		 
+
 	end
 
-
-	def new
+	def wages
 		@query = Query.new
-		render template: "queries/new"
+		@find_queries = Query.where(topic: "Payment of Wages")
+		@queries = @find_queries.order(id: :desc)
+
+		@answer = Answer.new
+	end
+ 
+ 	def timeoff
+ 		@query = Query.new
+		@find_queries = Query.where(topic: "Time Off")
+		@queries = @find_queries.order(id: :desc)
+
+		@answer = Answer.new
+	end
+
+	def timeoff_new
+		@query = current_user.queries.new(query_params)
+		@query.topic = "Time Off"
+		if @query.save
+			redirect_to timeoff_path
+
+		else
+			flash[:notice] = "Sorry, your query was not successfully submitted. Try again? :)"
+
+		end
 	end
 
 	def create
-		@query = Query.new(query_params)
+		@query = current_user.queries.new(query_params)
+		@query.topic = "Payment of Wages"
 		if @query.save
-			redirect_to @query
+			redirect_to wages_path
 
 		else
-			render "new"
+			flash[:notice] = "Sorry, your query was not successfully submitted. Try again? :)"
+
 		end
 	end
 
@@ -45,7 +71,7 @@ class QueriesController < ApplicationController
 
 	private
 	def query_params
-		params.require(:query).permit(:question, :description, :topic)
+		params.require(:query).permit(:question, :description)
 	end
 end
 
