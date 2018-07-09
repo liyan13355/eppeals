@@ -104,6 +104,11 @@
 	height: 100px;
 }
 
+.filler-small {
+	width: 100%;
+	height: 25px;
+}
+
 .section-header {
 	width: 100%;
 /*	height: 100px;*/
@@ -269,6 +274,16 @@
 	font-size: 18px;
 	text-decoration: none;
 	color: black;
+}
+
+
+.answer a {
+	text-decoration: none;
+	color: black;
+}
+
+.answer a:hover {
+	color: gray;
 }
 
 .answer-submission-info {

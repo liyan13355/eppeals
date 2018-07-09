@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get "/sign_up" => "users#new", as: "sign_up"
   get "/users/individual/:id" => "users#individual", as: "individual"
  
-  root "welcome#index"
+  root "welcome#index", as: "home"
 
 end
 

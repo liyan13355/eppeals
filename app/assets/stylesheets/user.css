@@ -1,0 +1,32 @@
+
+
+.avatar {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+
+#user-info {
+	width: 185px;
+/*	padding-top: 15px;*/
+	box-sizing: border-box;
+}
+
+#user-info img {
+	margin-top: 25px;
+	margin-right: 0px;
+}
+
+#user-info a {
+	margin-right: 10px;
+}
+
+.navbar-tag a {
+	text-decoration: none;
+	color: black;
+	margin-right: 0px;
+}
+
+.navbar-tag a:hover {
+	color: gray;
+}
