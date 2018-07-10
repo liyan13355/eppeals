@@ -66,26 +66,6 @@ ActiveRecord::Schema.define(version: 2018_07_09_183024) do
     t.integer "sender_id"
     t.integer "recipient_id"
     t.text "content"
-    end
-
-  create_table "lawyers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "email", null: false
-    t.string "type", null: false
-    t.string "avatar"
-    t.date "birthday", null: false
-    t.string "description"
-    t.string "education"
-    t.json "proof", null: false
-    t.boolean "verified", default: false
-    t.string "encrypted_password", limit: 128, null: false
-    t.string "confirmation_token", limit: 128
-    t.string "remember_token", limit: 128, null: false
-    t.index ["email"], name: "index_lawyers_on_email"
-    t.index ["remember_token"], name: "index_lawyers_on_remember_token"
   end
 
   create_table "pg_search_documents", force: :cascade do |t|
@@ -95,7 +75,6 @@ ActiveRecord::Schema.define(version: 2018_07_09_183024) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
-
   end
 
   create_table "queries", force: :cascade do |t|

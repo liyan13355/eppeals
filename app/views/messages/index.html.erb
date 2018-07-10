@@ -18,6 +18,7 @@
 
 						<% @conversation = Message.where({recipient_id: @recipient_id, sender_id: current_user.id}).or(Message.where({recipient_id: current_user.id, sender_id: @recipient_id})).order(created_at: :asc).limit(3)%>
 
+						<br/>
 						<h3><a href="/users/<%=@recipient_id%>/messages/new"> Your Convo</a> With <a href= "/users/individual/<%=message.recipient_id%>"><%= User.find(message.recipient_id).first_name %> <img src= "<%=User.find(message.recipient_id).avatar.thumb.url%>"/></a></h3>
 
 						<% @conversation.each do |x| %>
@@ -59,7 +60,7 @@
 						<% @sender_id = message.sender_id %>
 
 						<% @conversation = Message.where({recipient_id: @sender_id, sender_id: current_user.id}).or(Message.where({recipient_id: current_user.id, sender_id: @sender_id})).order(created_at: :asc).limit(3)%>
-
+						<br/>
 						<h3><a href="/users/<%=@sender_id%>/messages/new"> Your Convo</a> With <a href= "/users/individual/<%=message.sender_id%>"><%= User.find(message.sender_id).first_name %> <img src= "<%=User.find(message.sender_id).avatar.thumb.url%>"/></a></h3>
 
 						<% @conversation.each do |x| %>
@@ -88,7 +89,7 @@
 
 		</div>
 
-		<br/><br/><br/><br/><br/>
+	
 
 	<% end %>
 
