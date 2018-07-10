@@ -151,10 +151,21 @@
 	font-size: 25px;
 	margin-top: 5px;
 	margin-bottom: 0px;
-	height: 120px;
+	height: 200px;
 	width: 90%;
+	color: black;
 /*	border: 1px dotted gray;*/
 }
+
+.news-item-container a {
+	color: black;
+	text-decoration: none;
+}
+
+.news-item-container a:hover {
+	color: gray;
+}
+
 
 .news-item-img {
 	width: 100%;
@@ -202,6 +213,7 @@
 .questions-container {
 /*	border: 1px dotted gray;*/
 	width: 100%;
+	margin-bottom: 30px;
 
 }
 
@@ -220,27 +232,40 @@
 	color: gray;
 	font-size: 10px;
 	font-weight: 600;
-	margin-bottom: -15px;
+	margin-bottom: 6px;
 
 }
 
 .question-title {
 	margin-left: 60px;
 /*	border: 1px dotted gray;*/
-	margin-bottom: 10px
-	margin-top: 0px;
+	margin-bottom: 20px
+	margin-top: 20px;
+	height: 50px;
+	font-size: 30px;
 
+}
+
+a.question-title {
+	margin-bottom: 30px;
+	text-decoration: none;
+	margin-top: 20px;
+	color: black;
+	font-size: 30px;
+	font-weight: 800;
 }
 
 .question-submission-info {
 	display: flex;
 	flex-direction: row;
 	margin-left: 60px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 /*	border: 1px dotted gray;*/
 }
 
 .question-submission-info-item {
-	margin-right: 20px;
+	margin-right: 10px;
 	text-transform: uppercase;
 	text-decoration: none;
 	letter-spacing: 0.5px;
@@ -257,7 +282,12 @@
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 20px;
-	margin-top: 20px;
+	margin-top: 0px;
+	background-color: #f1f1f2;
+}
+
+.answer-container p {
+	margin-left: 5px;
 }
 
 #top-answer {
@@ -268,6 +298,7 @@
 	margin-bottom: 5px;
 	font-size: 10px;
 	font-weight: 600;
+	margin-left: 5px;
 }
 
 .answer {
@@ -277,9 +308,10 @@
 }
 
 
-.answer a {
+a.answer {
 	text-decoration: none;
 	color: black;
+	margin-left: 5px;
 }
 
 .answer a:hover {
@@ -302,6 +334,7 @@
 	font-size: 10px;
 	margin-top: 10px;
 	margin-bottom: 0px;
+	margin-left: 5px;
 }
 
 .profile-img {
@@ -373,6 +406,18 @@
 
 /*extra wide breakpoint*/
 
+@media(min-width: 1061px) {
+	.news-item-container h2 {
+		height: 150px;
+	}
+}
+
+@media(max-width: 1060px) {
+	.news-item-container h2 {
+		height: 175px;
+	}
+}
+
 @media(max-width: 1015px) {
 	.topics-item-container h2 {
 		font-size: 20px;
@@ -394,6 +439,7 @@
 	
 	.news-item-container h2 {
 		font-size: 18px;
+		height: 150px;
 	}
 
 	.header-container h1 {
@@ -428,10 +474,6 @@
 		margin-bottom: 30px;
 	}
 
-	.news-item-container h2 {
-		height: 100px;
-	}
-
 	.news-item-img {
 		width: 100%;
 		height: 250px;
@@ -440,6 +482,7 @@
 	
 	.news-item-container h2 {
 		font-size: 25px;
+		height: 125px;
 	}
 
 	.question-title {
@@ -472,6 +515,10 @@
 
 	.topics-item-container p {
 		font-size: 14px;
+	}
+
+	.no-answer {
+		margin-left: 30px;
 	}
 
 

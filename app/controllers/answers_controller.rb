@@ -3,7 +3,7 @@ class AnswersController < ApplicationController
 	def index 
 	end
 
-
+ 
 
 	def create
 		# @answer = current_user.answers.new(answer_params)

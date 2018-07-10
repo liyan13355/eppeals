@@ -20,7 +20,7 @@
 
   <body>
     <!-- The bottom link to homepage should be epeals logo -->
-    <p> <a href = "http://localhost:3000"> Epeals </a></p>
+<!--     <p> <a href = "http://localhost:3000"> Epeals </a></p> -->
 
     
 
@@ -40,7 +40,7 @@
 
 
       <!-- SEARCH CONTAINER -->
-
+<!-- 
       <div class="navbar-tag-container" id="search-form-container-wide">
 
           <form><input type="text" class="search-form" id="search-bar">
@@ -49,7 +49,16 @@
 
           </form>
 
-        </div>
+      </div> -->
+
+      <div id="search-form-container-wide">
+
+      <%= form_tag search_result_path, method: :get do %>
+        <input type="text" name="search" class = "search-form">
+        <%= submit_tag 'Search', :class => 'button' %>
+      <% end %>
+
+    </div>
 
 
 
@@ -141,27 +150,32 @@
 
          <% if signed_in? %>
 
+      <div id="search-form-container">
+
+      <%= form_tag search_result_path, method: :get do %>
+        <input type="text" name="search" class = "search-form navbar-form">
+        <%= submit_tag 'Search', :class => 'button', :id => 'navbar-button' %>
+      <% end %>
+
+    </div>
+
       <div class="dropdown-link" id="user-info-dropdown">
-        <%= link_to current_user.email, user_path(current_user), :class => "dropdown-tag"  %>
+        <strong><%= link_to current_user.email, user_path(current_user), :class => "dropdown-tag"  %></strong>
       </div>
 
 
       <div class="dropdown-link responsive-dropdown-link" id="sign-out-link">
 
-        <%= link_to t(".sign_out"), sign_out_path, method: :delete, :class => "dropdown-tag" %>
+        <strong><%= link_to t(".sign_out"), sign_out_path, method: :delete, :class => "dropdown-tag" %></strong>
 
       </div>
 
 
-         <div class="dropdown-link" id="search-form-container">
+<!--          <div class="dropdown-link" id="search-form-container"> -->
 
-            <form><input type="text" class="search-form">
 
-              <input type="submit" value="Search">
 
-          </form>
-
-      </div>
+<!--       </div> -->
 
 
       <div class="dropdown-link" id="complaint-dropdown">
@@ -219,17 +233,14 @@
 
 
 
-      <div class="dropdown-link" id="search-form-container">
+      <div id="search-form-container">
 
-          <form><input type="text" class="search-form" id="search-bar">
+      <%= form_tag search_result_path, method: :get do %>
+        <input type="text" name="search" class = "search-form navbar-form">
+        <%= submit_tag 'Search', :class => 'button', :id => 'navbar-button' %>
+      <% end %>
 
-              <input type="submit" value="Search">
-
-          </form>
-
-        <a href="#" class="dropdown-tag"></a>
-
-      </div>
+    </div>
 
 
       <div class="dropdown-link" id="complaint-dropdown">
@@ -303,9 +314,6 @@
 
 
 
-
-
-
 <script>
       $("#dropdown-navbar").hide();
     // $("#filler-mobile").hide();
@@ -325,6 +333,7 @@
 
 
     
+
 
     <%= yield %>
 

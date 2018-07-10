@@ -17,7 +17,7 @@
        <div class="quiz-box-container">
 
          <h3>Are you being treated fairly?</h3>
-         <div class="button" id="main-quiz"> <a href=/quizes/>Take the quiz</a></div>
+         <a class="quiz" href='/quizes'><div class="button"> Take the quiz</div></a>
 
        </div>
 
@@ -123,7 +123,7 @@
 
         <p class="question-topic"><%= query.topic %></p>
 
-        <h2 class="question-title"><%= query.question%></h2>
+        <a href = "/queries/<%=query.id %>" class="question-title"><%= query.question%></a>
 
         <div class="question-submission-info">
 

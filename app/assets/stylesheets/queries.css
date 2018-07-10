@@ -1,0 +1,249 @@
+
+
+.content-container {
+	width: 100%;
+/*	border: 1px dotted gray;*/
+	margin: auto;
+	padding-left: 100px;
+	padding-right: 100px;
+	box-sizing: border-box;
+	margin-bottom: 50px;
+}
+
+.result-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.top-answers {
+	margin-left: 85px;
+	margin-bottom: 20px;
+	font-size: 17px;
+	font-weight: 800;
+}
+
+.content-container p {
+	line-height: 1.5;
+}
+
+
+
+
+.headline-new {
+	margin-left: 20px;
+	border: 1px dotted gray;
+	font-size: 70px;
+	margin-top: -100px;
+	text-transform: uppercase;
+	color: white;
+	text-shadow: 0.5px 0.5px 3px 0.5px rgba(0, 0, 0, 0.9);
+	z-index: 1;
+}
+
+.legal-act-header {
+	font-size: 13px;
+	text-transform: uppercase;
+	color: red;
+	letter-spacing: 2px;
+}
+
+.form-topper {
+	font-size: 12px;
+	color: red;
+	font-weight: 400;
+}
+
+.subhead {
+	font-size: 25px;
+}
+
+.legal-list {
+	color: black;
+	font-size: 16px;
+	line-height: 3;
+}
+
+.law-section {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 13px;
+}
+
+#query_question {
+	width: 340px;
+	height: 22px;
+	font-size: 18px;
+}
+
+#answer-button {
+	width: 110px;
+	margin-top: 0px;
+	height: 30px;
+}
+#query_description {
+	width: 340px;
+	height: 22px;
+	font-size: 18px;
+}
+
+.smaller {
+	font-size: 14px;
+	margin-bottom: 0px;
+	font-weight: 600;
+}
+.section-header {
+	font-size: 40px;
+	font-weight: 400;
+	margin-top: 0px;
+	margin-bottom: 30px;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+}
+
+.description {
+	margin-left: 100px;
+}
+
+#embedded {
+	margin-top: -10px;
+
+}
+
+#answer_content {
+	width: 400px;
+	height: 30px;
+	font-size: 17px;
+	border-top: 0px;
+	border-right: 0px;
+	border-left: 0px;
+	border-bottom: 1px solid black;
+	color: gray;
+	font-size: 18px;
+}
+
+.no-answer {
+	margin-left: 85px;
+	color: gray;
+	font-size: 13px;
+	margin-top: 0px;
+	margin-bottom: 30px;
+}
+
+#answer_content:focus {
+outline:0;
+ }
+
+.answer-form {
+	margin-left: 60px;
+/*	border: 1px dotted gray;*/
+}
+
+#answer-info {
+	margin-left: 0px;
+}
+
+.upvote {
+	width: 17px;
+	margin-right: 10px;
+	margin-top: 12px;
+	margin-left: 5px;
+}
+
+.upvote-number {
+	background-color: #8cc63e;
+	box-sizing: border-box;
+	color: white;
+	font-size: 11px;
+	font-weight: 600;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+
+.upvote-container {
+	display: flex;
+}
+
+.upvote:hover {
+	cursor: pointer;
+	opacity: 0.6;
+}
+
+.verified {
+	width: 15px;
+	height: 15px;
+	margin-top: -1px;
+}
+
+/*responsive styles*/
+
+
+@media(max-width: 900px) {
+	.headline-new {
+		font-size: 55px;
+		margin-left: 2px;
+	}
+}
+
+@media(max-width: 700px) {
+	.headline-new {
+		font-size: 50px;
+		width: 100%;
+		margin-top: -70px;
+		margin-left: 2px;
+	}
+
+	.content-container {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+}
+
+
+
+@media(max-width: 500px) {
+	.headline-new {
+		font-size: 50px;
+		margin-left: 10px;
+		margin-top: -120px;
+		line-height: 0.9;
+	}
+
+	.smaller {
+		font-size: 15px;
+		margin-left: -10px;
+		font-weight: 600;
+	}
+
+	h2.question-title.smaller {
+		margin-left: 0px;
+		padding-left: -10px;
+	}
+
+	h2.question-title {
+		font-size: 20px;
+	}
+	.description {
+		margin-left: 10px;
+		font-size: 15px;
+	}
+
+	.answer-form {
+		margin-left: 0px;
+	}
+
+	#answer_content {
+		margin-left: 0px;
+		width: 300px;
+	}
+
+	.top-answers {
+		margin-left: 30px;
+		font-size: 13px;
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+}
