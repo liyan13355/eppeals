@@ -246,7 +246,7 @@
 
 		<img class="avatar" id="embeddedanswer" src = "<%=User.find(answer.user_id).avatar.thumb.url%>"/>
 
-			<a href="/users/individual/<%=query.user_id%>" class="question-submission-info-item"> Submitted by <strong> <%= User.find(answer.user_id).first_name %></strong> </a>
+			<a href="/users/individual/<%=answer.user_id%>" class="question-submission-info-item"> Submitted by <strong> <%= User.find(answer.user_id).first_name %></strong> </a>
 
 			<!-- this tick only appears if user is a lawyer -->
 			<% if User.find(answer.user_id).lawyer? %>
