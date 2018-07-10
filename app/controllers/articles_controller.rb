@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
 	def index
 		@articles = Article.order(id: :desc)
 	end
-
+ 
 	def new
 		if (!current_user || !current_user.lawyer? || !current_user.verified == true)
 			redirect_to sign_up_path

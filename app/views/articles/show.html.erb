@@ -1,7 +1,9 @@
 
 
 
+
 <img class="article-dom-img" src="/ringgit2.jpg" />
+
 
 
 <% if signed_in? && current_user.id == @author.id %>
@@ -89,7 +91,7 @@ What in tarnation? In both cases, you’re broke, and this is also the proverbia
 	<h4>Post a comment</h4>
 </div>
 
-<!-- this is naturally hidden until the div above is clicked -->
+<!-- this is naturally hidden until the div above is clicked --> 
 <div>
 <%= form_for [@article, @comment] do |f| %>
 <p>

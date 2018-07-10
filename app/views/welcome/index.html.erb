@@ -55,7 +55,7 @@
 
         <img class="news-item-img" src="/annualleave.jpg" />
 
-        <h2><a href="http://localhost:3000/articles/2"><%= Article.find(1).title %></a></h2>
+        <h2><a href="http://localhost:3000/articles/1"><%= Article.find(1).title %></a></h2>
 
         <p class="author-tag">By <strong><%= User.find(Article.find(1).user_id).first_name %> <%= User.find(Article.find(1).user_id).last_name %> </strong></p>
 
@@ -71,7 +71,7 @@
 
         <img class="news-item-img" src="/ringgit.jpg" />
 
-        <h2><a href="http://localhost:3000/articles/3"><%= Article.find(2).title %></a></h2>
+        <h2><a href="http://localhost:3000/articles/2"><%= Article.find(2).title %></a></h2>
 
         <p class="author-tag">By <strong><%= User.find(Article.find(2).user_id).first_name %> <%= User.find(Article.find(2).user_id).last_name %></strong></p>
 
@@ -151,7 +151,7 @@
 
           </div>
 
-          <div class="button" id="seemore">See More</div>
+          <a href="/queries/<%= query.id %>"> <div class="button" id="seemore">See More</div> </a>
 
           <% end %>
 
@@ -225,7 +225,7 @@
         <div class="divider-horizontal" id="white"></div>
 
 
-        <p>We're living in the 21st century. Make sure that your boss and coworkers are treating you with the respect you deserve.</p>
+          <p>We're living in the 21st century. Make sure that your boss and coworkers are treating you with the respect you deserve.</p>
 
         
         <div class="button-container">
@@ -250,7 +250,7 @@
         <div class="divider-horizontal" id="white"></div>
 
 
-        <p>Hard work is good, but ensuring you are compensated fairly is equally important. Find out about Malaysia's laws regarding working hours.</p>
+          <p>Hard work is good, but ensuring you are compensated fairly is equally important. Find out about Malaysia's laws regarding working hours.</p>
 
 
 

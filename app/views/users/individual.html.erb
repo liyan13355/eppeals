@@ -1,4 +1,4 @@
-<% if @user.lawyer? %>
+<% if @user.lawyer? %>   
 <div class="lawyer-display">
 <p> LAWYER </p>
 <h2> <%= @user.first_name %> <%= @user.last_name %> </h2>
@@ -16,7 +16,33 @@
 <br/></div>
 
 <br/><br/>
+	
+<!--This part is the option for sending messages -->
 
+	<% if signed_in? %>
+		<div> 
+			<h4>Send a Message</h4>
+		</div>
+
+<!-- this is naturally hidden until the div above is clicked --> 
+		<div>
+		<%= form_for [current_user, @message] do |f| %>
+		<p>
+				<%= f.label :content %><br/> 
+				<%= f.text_field :content %><br/>
+
+				<input type='hidden' name='recipient_id' value='<%=@user.id%>'>
+
+			</p>
+			<p> 		<%= f.submit %> </p>
+
+		<% end %>
+		</div>
+	<% end %>
+
+
+
+<br/><br/>
 <div>
 	<h4>Articles By This Lawyer</h4>
 	<br/>
@@ -36,6 +62,35 @@
 		<h2> <%= @user.first_name%> <%= @user.last_name%> </h2>
 		<br/>
 		<img src = "<%=@user.avatar%>">
+		<br/><br/><br/>
+
+
+		<!--This part is the option for sending messages -->
+
+	<% if signed_in? %>
+		<div> 
+			<h4>Send a Message</h4>
+		</div>
+
+<!-- this is naturally hidden until the div above is clicked --> 
+		<div>
+		<%= form_for [current_user, @message] do |f| %>
+		<p>
+				<%= f.label :content %><br/> 
+				<%= f.text_field :content %><br/>
+
+				<% f.hidden_field :sender_id, :value => current_user.id %>
+				<input type='hidden' name='recipient_id' value='<%=@user.id%>'>
+
+			</p>
+			<p> 		<%= f.submit %> </p>
+
+		<% end %>
+		</div>
+	<% end %>
+
+
+
 		<br/><br/><br/><hr/>
 		<p> Email: <%= @user.email %></p>
 		<p> Birthday: <%= @user.birthday %></p>

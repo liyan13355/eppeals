@@ -43,9 +43,10 @@ ActiveRecord::Schema.define(version: 2018_07_09_183024) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
-    t.string "content"
+    t.text "content"
     t.string "tag"
     t.bigint "user_id"
+    t.string "image"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -58,6 +59,14 @@ ActiveRecord::Schema.define(version: 2018_07_09_183024) do
     t.index ["article_id"], name: "index_comments_on_article_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
+
+  create_table "messages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.text "content"
+    end
 
   create_table "lawyers", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -86,6 +95,7 @@ ActiveRecord::Schema.define(version: 2018_07_09_183024) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
+
   end
 
   create_table "queries", force: :cascade do |t|

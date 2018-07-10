@@ -1,17 +1,186 @@
-<h1 class= "question">
-<%= @query.question %>
-</h1>
 
-<p class="date">
-	Submitted <%= time_ago_in_words(@query.created_at) %> ago
-</p>
 
-<p class="description">
-	<%= @query.description %>
-</p>
 
-<p class="topic">
-	<%= @query.topic %>
-</p>
+
+	<p class="question-topic"><%= @query.topic %></p>
+
+	<h2 class="question-title"><%= @query.question %></h2>
+
+		<div class="question-submission-info">
+
+			<img class="avatar" id="embedded" src = "<%=User.find(@query.user_id).avatar.thumb.url%>"/>
+
+			<p class="question-submission-info-item">Submitted by <strong> <%= User.find(@query.user_id).first_name %></strong></p>
+			<p class="question-submission-info-item">Posted <strong><%= time_ago_in_words(@query.created_at) %></strong> ago</p>
+
+
+		</div>
+
+	<p class="description"><%= @query.description %></p>
+
+
+
+
+
+
+<% if current_user == nil %>
+
+			<div class="answer-container">
+
+		<div class="question-title-container">
+
+			<h2 class="question-title smaller" id="canyouanswer"> Can you answer this question? </h2>
+
+			<a href="<%= sign_in_path %>"><img class="click-plus" id="clickable-plus" src="/clickableplusnew3.png" /> </a>
+
+		</div>
+
+
+	</div>
+
+	<% end %>
+
+
+
+
+	<!-- this will be a div that only signed in users can see and click on so that they can answer the question -->
+	<% if signed_in? %>
+
+	<div class="answer-container">
+
+		<div class="question-title-container">
+
+			<h2 class="question-title smaller" id="canyouanswer"> Can you answer this question? </h2>
+
+			<img class="click-plus" id="clickable-plus" src="/clickableplusnew3.png" />
+
+			<img class="click-plus clickable-minus" src="/clickableminus.png" />
+
+		</div>
+
+		<!-- this form is hidden until the above div is clicked on -->
+
+
+			<div class="answer-form">
+				<%= form_for [@query, @answer] do |f| %>
+					<p>
+							<%= f.label :"Type your answer below", :class => 'form-topper'%><br/> 
+							<%= f.text_field :content %><br/>
+							<% f.hidden_field :user_id, :value => current_user.id %>
+							<% f.hidden_field :query_id, :value => @query.id %>
+
+						</p>
+						<p> <%= f.submit "Post answer", :class => 'button', :id => 'answer-button'%> </p>
+
+					<% end %>
+
+				</div>
+			
+
+		<div class="divider-horizontal"></div>
+
+			</div>
+	</div>
+
+	<% end %>
+
+	<h2 class = "top-answers"> Answers to this question </h2>
+
+	<% @answers = Answer.where(query_id: @query.id).order(upvotes: :desc) %>
+
+	<% if @answers.count == 0 %>
+
+		<p class="no-answer"> No answers yet. </p>
+
+			<div class="divider-horizontal"></div>
+			<div class="divider-horizontal"></div>
+			<div class="divider-horizontal"></div>
+
+	<%end%>
+
+		<br/>
+
+		
+
+
+
+<div class="answer-container">
+
+	<% @answers.each do |answer| %>
+
+	<div class="question-submission-info" id="answer-info">
+
+		<img class="avatar" id="embeddedanswer" src = "<%=User.find(answer.user_id).avatar.thumb.url%>"/>
+
+			<a href="/users/individual/<%=@query.user_id%>" class="question-submission-info-item"> Submitted by <strong> <%= User.find(answer.user_id).first_name %></strong> </a>
+
+			<!-- this tick only appears if user is a lawyer -->
+			<% if User.find(answer.user_id).lawyer? %>
+
+				<img class="verified" src = "/verified_icon.png"/>
+
+			<% end %> 
+		</div>
+
+			<p> <%= answer.content %> </p>
+
+		
+
+	<div class="upvote-container">
+			<%= form_for answer, url: answers_upvote_path, method: :post do |x| %>
+
+	  		
+	  			<input type="hidden", value="<%=answer.id%>", name="answer_id">
+	  			<input type="image" class="upvote" name="submit" src="/thumbsup3.png" border="0" alt="Upvote" />
+	  		
+			
+			<% end %>
+
+		<!--this shows the number of times the answer has been upvoted. Maybe it needs a thumbs up symbol or something next to it..or! the upvot button can be a thumbs up symbol and the upvote count will be next to it. -->
+
+
+		<p class="upvote-number"><%= answer.upvotes %> upvotes</p>
+
+		</div>
+
+		<div class="divider-horizontal"></div>
+
+
+
+		
+
+	
+
+	<%end%>
+	</div>
+		
+
+<!-- 		</div> -->
+
+		
+
+		<script>
+     $(".answer-form").hide();
+      // $("#clickable-minus").hide();
+    // $("#filler-mobile").hide();
+
+    $(".click-plus").on("click", function(e){
+        // e.preventDefault();
+        $(".answer-form").toggle();
+        // $("#clickable-plus").hide();
+        // $('.clickable-minus').show();
+        console.log('click');
+
+
+    });
+  </script>
+
+
+
+
+
+
+
+
 
 
