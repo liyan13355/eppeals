@@ -71,10 +71,10 @@
 
         
 
-        <p class="navbar-tag"><%= link_to current_user.email, users_path %></p>
+        <p class="navbar-tag"><a href="/users/individual/<%= current_user.id %>"><%= current_user.email %></a></p>
       
 
-        <a href="/users/<%= current_user.id %>"><img class ="avatar" src="<%= current_user.avatar.thumb.url %>"></a>
+        <a href="/users/individual/<%= current_user.id %>"><img class ="avatar" src="<%= current_user.avatar.thumb.url %>"></a>
 
 
       </div>
