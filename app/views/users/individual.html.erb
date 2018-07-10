@@ -1,69 +1,191 @@
+
+
+
 <% if @user.lawyer? %>   
+
+<!-- display this class if user is a lawyer -->
+
 <div class="lawyer-display">
-<p> LAWYER </p>
-<h2> <%= @user.first_name %> <%= @user.last_name %> </h2>
-<br/>
-<img src = "<%=@user.avatar%>">
-<br/><br/><br/><br/>
-<p> <%= @user.description %> </p>
-<br/><hr/>
 
-<div> <h3> Background </h3>
-<br/>
-<p> Education: <%= @user.education %> </p>
-<p> Specialisation: <%= @user.type_of_lawyer %> </p>
-<p> Contact: <%= @user.email %></p>
-<br/></div>
 
-<br/><br/>
+<div class="user-container">
+
+
+	<p class="user-type"> Lawyer</p>
+
+	<div class="user-name-container">
+
+		<p class="user-name"> <%= @user.first_name %> <strong><%= @user.last_name %> </strong></p>
+
+		<img class="verified-user-profile" src = "/verified_icon.png"/>
+
+	</div>
+
+
+
+
+	<div class="user-photo-container">
+
+			<img class="profile-pic-view" src = "<%=@user.avatar%>" />
+
+			<div class="user-info-container">
+
+				<div class="divider-horizontal"></div>
+
+				<p class="user-type">Brief Description</p>
+
+				<p class="quick-description"> <%= @user.description %> </p>
+
+			<div class="divider-horizontal"></div>
+
+				<p class="user-type">Background</p>
+
+				<p class="background"> <strong>Education:</strong> <%= @user.education %> </p>
+				<p class="background"> <strong>Specialisation:</strong> <%= @user.type_of_lawyer %> </p>
+
+			<div class="divider-horizontal"></div>
+
+				<p class="user-type">Contact Information</p>
+
+				<p class="background"> <strong>Email:</strong> <%= @user.email %></p>
+
+			</div>
+
+	</div>
+
+
 	
 <!--This part is the option for sending messages -->
 
-	<% if signed_in? %>
-		<div> 
-			<h4>Send a Message</h4>
-		</div>
+
+
 
 <!-- this is naturally hidden until the div above is clicked --> 
-		<div>
-		<%= form_for [current_user, @message] do |f| %>
-		<p>
-				<%= f.label :content %><br/> 
-				<%= f.text_field :content %><br/>
+	<div class="divider-horizontal"></div>
+<div class="secondary-items-container">
+
+
+	<div class="message-form-container">
+
+
+			<p class="send-message" id="secondary">Send a Message to <%= @user.first_name %></p>
+
+
+		<% if signed_in? %>
+			<%= form_for [current_user, @message] do |f| %>
+
+				<%= f.label :type_your_message_below, :class => 'user-type' %><br/> 
+				<%= f.text_area :content, :class => 'message-form' %><br/>
 
 				<input type='hidden' name='recipient_id' value='<%=@user.id%>'>
 
-			</p>
-			<p> 		<%= f.submit %> </p>
+
+			<p> <%= f.submit :Send, :class => 'button', :id => 'send' %> </p>
+
+			
 
 		<% end %>
-		</div>
+		
+		<% else %>
+
+		<p> You must be <a href id="mustbesignedin"="<%=sign_in_path %>">signed  in </a>to send a message </p>
+
+
 	<% end %>
 
+	</div>
 
 
-<br/><br/>
-<div>
-	<h4>Articles By This Lawyer</h4>
+
+<div class="divider-vertical"></div>
+
+
+
+
+
+<div class="articles">
+	<p class="send-message" id="secondary"><%= @user.first_name %>'s Articles</p>
 	<br/>
 	<% @articles.each do |x| %>
-		<strong><a href="/articles/<%=x.id%>"> <%= x.title %> </a></strong>
+
+
+	<div class="lawyer-articles-container">
+
+		<a href="/articles/<%=x.id%>" class="headline-link"> <%= x.title %> </a>
+
+		
+	
+	
+
+	</div>
+	<div class="divider-horizontal"></div>
+	<br/>
+
+
 	<% end %>
+	<% if @user.articles.count < 1 %>
+		<p> <%= @user.first_name %> hasn't written any articles yet </p>
+
+		<% end %>
+	</div>
+
 </div>
+</div>
+
 </div>
 
 <%else%>
 
-<div class="user-display">
-		<p> PROFILE </p>
-		<div>
-			
-	</div>
-		<h2> <%= @user.first_name%> <%= @user.last_name%> </h2>
-		<br/>
-		<img src = "<%=@user.avatar%>">
-		<br/><br/><br/>
 
+<!-- STYLE FOR NON-LAWYER (NORMAL USER) HERE -->
+
+
+
+<div class="user-container">
+
+
+	<p class="user-type"> Epeals User</p>
+
+	<div class="user-name-container">
+
+		<p class="user-name"> <%= @user.first_name %> <strong><%= @user.last_name %> </strong></p>
+
+
+	</div>
+
+
+	<div class="user-photo-container">
+
+			<img class="profile-pic-view" src = "<%=@user.avatar%>" />
+
+			<div class="user-info-container">
+
+			<div class="divider-horizontal"></div>
+
+				<p class="user-type">Contact</p>
+
+				<p class="quick-description"> <strong>Email:</strong><%= @user.email %> </p>
+
+			<div class="divider-horizontal"></div>
+
+				<p class="user-type">Occupation</p>
+
+				<p class="quick-description"><%= @user.industry%> </p>
+
+				<div class="divider-horizontal"></div>
+
+				<p class="user-type">Date of Birth</p>
+
+				<p class="quick-description"><%= @user.birthday.to_date%> </p>
+
+			</div>
+
+	</div>
+
+
+
+
+	
 
 		<!--This part is the option for sending messages -->
 
@@ -88,13 +210,6 @@
 		<% end %>
 		</div>
 	<% end %>
-
-
-
-		<br/><br/><br/><hr/>
-		<p> Email: <%= @user.email %></p>
-		<p> Birthday: <%= @user.birthday %></p>
-		<p> Working In: <%= @user.industry %></p>
 
 	</div>
 

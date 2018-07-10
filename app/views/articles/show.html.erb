@@ -27,9 +27,19 @@
 <div class = "byline-container">
 
 
-	<img src="<%= @author.avatar.thumb.url %>"> 
+	 
 
-	<p class= "byline"> By <strong> <a href="/users/individual/<%=@author.id%>"><%= @author.first_name %> </a><a href="/users/<%=@author.id%>"><%= @author.last_name %></strong></a></p>
+
+	<div class="author-container">
+
+		<a href="/users/indivdual/<%= current_user.id %>"><img class ="avatar" src="<%= @author.avatar.thumb.url %>"></a>
+
+        <p><a class="author-tag" href="/users/individual/<%= Article.second.user_id %>">By <strong><%= User.find(Article.find(2).user_id).first_name %> <%= User.find(Article.find(2).user_id).last_name %> </strong></a></p>
+
+         <img class="verified" src = "/verified_icon.png"/>
+
+       </div>
+
 
 </div>
 
@@ -40,7 +50,7 @@
 <div class="article-submission-info">
 
 		<p class="article-submission-info-item">
-			Submitted <%= time_ago_in_words(@article.created_at) %> ago
+			Submitted <strong><%= time_ago_in_words(@article.created_at) %> ago</strong>
 		</p>
 
 		<p class="article-submission-info-item">
