@@ -71,7 +71,7 @@
 
         
 
-        <p class="navbar-tag"><%= link_to current_user.email, user_path(current_user) %></p>
+        <p class="navbar-tag"><%= link_to current_user.email, users_path %></p>
       
 
         <a href="/users/<%= current_user.id %>"><img class ="avatar" src="<%= current_user.avatar.thumb.url %>"></a>
@@ -201,7 +201,7 @@
         
         <div class="dropdown-link" id = "complaint-dropdown">
 
-          <a href= "http://localhost:3000/articles/new" class="dropdown-tag"> Write A Legal Article </a>
+          <a href= "/articles/new" class="dropdown-tag"> Write A Legal Article </a>
 
         </div>
 

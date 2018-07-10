@@ -108,6 +108,7 @@
 	<br/>
 	<% @articles.each do |x| %>
 
+
 	<div class="lawyer-articles-container">
 
 		<a href="/articles/<%=x.id%>" class="headline-link"> <%= x.title %> </a>
@@ -119,6 +120,7 @@
 	</div>
 	<div class="divider-horizontal"></div>
 	<br/>
+
 
 	<% end %>
 	<% if @user.articles.count < 1 %>

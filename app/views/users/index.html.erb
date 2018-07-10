@@ -2,7 +2,7 @@ i<% if current_user.lawyer? %>
 	<div class="lawyer-display">
 	<p> LAWYER PROFILE</p>
 	<div>
-			<a href = "http://localhost:3000/users/<%=current_user.id%>/edit"> Update Profile </a>
+			<a href = "/users/<%=current_user.id%>/edit"> Update Profile </a>
 
 	</div>
 	<h2> <%= current_user.first_name %> <%= current_user.last_name %> </h2>
@@ -29,7 +29,7 @@ i<% if current_user.lawyer? %>
 			<h4>Your Lawyerly Articles</h4>
 			<br/>
 			<% @articles.each do |x| %>
-				<strong><a href="http://localhost:3000/articles/<%=x.id%>"> <%= x.title %> </a></strong>
+				<strong><a href="/articles/<%=x.id%>"> <%= x.title %> </a></strong>
 				<br/>
 			<% end %>
 			</div>
@@ -41,7 +41,7 @@ i<% if current_user.lawyer? %>
 		<p> USER PROFILE </p>
 		<div>
 			
-			<a href = "http://localhost:3000/users/<%=current_user.id%>/edit"> Update Profile </a>
+			<a href = "/users/<%=current_user.id%>/edit"> Update Profile </a>
 
 	</div>
 		<h2> <%= current_user.first_name%> <%= current_user.last_name%> </h2>

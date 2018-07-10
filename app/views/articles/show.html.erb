@@ -29,6 +29,7 @@
 
 	 
 
+
 	<div class="author-container">
 
 		<a href="/users/indivdual/<%= current_user.id %>"><img class ="avatar" src="<%= @author.avatar.thumb.url %>"></a>
@@ -38,6 +39,7 @@
          <img class="verified" src = "/verified_icon.png"/>
 
        </div>
+
 
 </div>
 
@@ -122,7 +124,7 @@ What in tarnation? In both cases, you’re broke, and this is also the proverbia
 <hr/>
 <% @comments.each do |comment|%>
 <h5 class= "User">
-<a href="http://localhost:3000/users/individual/<%=comment.user_id%>"><%= User.find(comment.user_id).first_name %></a>
+<a href="/users/individual/<%=comment.user_id%>"><%= User.find(comment.user_id).first_name %></a>
 </h5>
 
 <p class="date">

@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2018_07_09_183024) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+
   create_table "lawyers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -78,6 +79,14 @@ ActiveRecord::Schema.define(version: 2018_07_09_183024) do
     t.string "remember_token", limit: 128, null: false
     t.index ["email"], name: "index_lawyers_on_email"
     t.index ["remember_token"], name: "index_lawyers_on_remember_token"
+
+  create_table "messages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.text "content"
+
   end
 
   create_table "messages", force: :cascade do |t|
