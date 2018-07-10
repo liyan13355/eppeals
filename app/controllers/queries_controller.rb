@@ -1,7 +1,8 @@
 class QueriesController < ApplicationController
 	def index
 
-		@top_queries = Query.featured		 
+		@top_queries = Query.featured	
+		@answer = Answer.new	 
 
 	end
 
@@ -47,6 +48,7 @@ class QueriesController < ApplicationController
 
 	def show
 		@query = Query.find(params[:id])
+		@answer = Answer.new
 	end
 
 
