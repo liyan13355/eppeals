@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_09_141659) do
+ActiveRecord::Schema.define(version: 2018_07_09_183024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alarms", force: :cascade do |t|
+    t.string "subject", null: false
+    t.string "description", null: false
+    t.json "files"
+    t.boolean "notify_employer"
+    t.boolean "notify_ic"
+    t.boolean "notify_wou"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_alarms_on_user_id"
+  end
 
   create_table "answers", force: :cascade do |t|
     t.datetime "created_at", null: false

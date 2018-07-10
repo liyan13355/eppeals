@@ -1,0 +1,26 @@
+Submit A Complaint
+
+<%= form_for @alarm do |f| %>
+	 <%= f.label :subject %>
+	<%= f.select :subject, Alarm::CATEGORY_LIST %>
+
+	<%= f.label :description %>
+	<%= f.text_field :description  %>
+	
+	<%= f.label :image %>	
+	<%= f.file_field :image, :multiple => true %>
+
+	<%= f.label "Notify Employer" %> <br />
+     <%= f.check_box :notify_employer, {}, true, false %> <br />
+
+     <%= f.label "Inform Industrial Court" %> <br />
+     <%= f.check_box :notify_ic, {}, true, false %> <br />
+
+     <%= f.label "Inform WOU" %> <br />
+     <%= f.check_box :notify_wou, {}, true, false %> <br />
+
+
+     <%= f.submit "Save changes", class: "btn btn-primary" %>
+
+
+<% end %>
