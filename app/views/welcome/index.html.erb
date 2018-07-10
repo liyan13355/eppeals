@@ -55,9 +55,15 @@
 
         <img class="news-item-img" src="/annualleave.jpg" />
 
-        <h2><a href="http://localhost:3000/articles/1"><%= Article.find(1).title %></a></h2>
+        <h2><a href="/articles/1"><%= Article.find(1).title %></a></h2>
 
-        <p class="author-tag">By <strong><%= User.find(Article.find(1).user_id).first_name %> <%= User.find(Article.find(1).user_id).last_name %> </strong></p>
+        <div class="author-container">
+
+        <p class="author-tag"><a class="author-tag" href="/users/individual/<%= Article.first.user_id %>">By <strong><%= User.find(Article.find(1).user_id).first_name %> <%= User.find(Article.find(1).user_id).last_name %> </strong></a></p>
+
+        <img class="verified" src = "/verified_icon.png"/>
+
+      </div>
 
       </div>
 
@@ -73,7 +79,13 @@
 
         <h2><a href="http://localhost:3000/articles/2"><%= Article.find(2).title %></a></h2>
 
-        <p class="author-tag">By <strong><%= User.find(Article.find(2).user_id).first_name %> <%= User.find(Article.find(2).user_id).last_name %></strong></p>
+        <div class="author-container">
+
+        <p class="author-tag"><a class="author-tag" href="/users/individual/<%= Article.second.user_id %>">By <strong><%= User.find(Article.find(2).user_id).first_name %> <%= User.find(Article.find(2).user_id).last_name %> </strong></a></p>
+
+         <img class="verified" src = "/verified_icon.png"/>
+
+       </div>
 
       </div>
 
@@ -89,7 +101,13 @@
 
         <!--<h2> <#%= # link_to '#{Article.find(3).title}', article_path('#{Article.find(3).title}') %></h2> -->
 
-        <p class="author-tag">By <strong><%= User.find(Article.find(3).user_id).first_name %> <%= User.find(Article.find(3).user_id).last_name %> </strong></p>
+        <div class="author-container">
+
+        <p class="author-tag"><a class="author-tag" href="/users/individual/<%= Article.third.user_id %>">By <strong><%= User.find(Article.find(3).user_id).first_name %> <%= User.find(Article.find(3).user_id).last_name %> </strong></a></p>
+
+        <img class="verified" src = "/verified_icon.png"/>
+
+      </div>
 
       </div>
 

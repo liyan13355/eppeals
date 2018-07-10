@@ -88,6 +88,19 @@ a.button {
 	text-decoration: none;
 }
 
+a.author-tag {
+	color: black;
+}
+
+a.author-tag:hover {
+	color: gray;
+}
+
+.author-container {
+	display: flex;
+	align-items: center;
+}
+
 .quiz {
 	text-decoration: none;
 }
@@ -383,6 +396,7 @@ outline:0;
 
 .avatar {
 	margin-right: 10px;
+	object-fit: cover;
 }
 
 #additional {

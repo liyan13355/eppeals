@@ -1,0 +1,191 @@
+
+
+.user-type {
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 1px;
+/*	border: 1px dotted gray;*/
+	margin-bottom: 10px;
+	margin-top: 0px;
+	color: gray;
+}
+
+.user-name-container {
+	width: 100%;
+	display: flex;
+	margin-bottom: 30px;
+}
+
+.user-photo-container {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+/*	border: 1px dotted gray;*/
+}
+
+.user-name {
+	font-size: 40px;
+	font-weight: 400;
+	margin-bottom: 0px;
+	margin-top: 10px;
+/*	border: 1px dotted gray;*/
+}
+
+.verified-user-profile {
+	margin-top: 30px;
+	width: 15px;
+	height: 15px;
+	margin-left: 10px;
+}
+
+.quick-description {
+	font-size: 17px;
+/*	border: 1px dotted gray;*/
+	margin-top: 10px;
+	font-weight: 800;
+
+}
+
+.user-info-container {
+	display: flex;
+	flex-direction: column;
+/*	border: 1px dotted gray;*/
+	margin-left: 20px;
+	width: 100%;
+
+}
+
+#mustbesignedin {
+	color: black;
+	font-weight: 600;
+}
+
+#mustbesignedin:hover {
+	color: gray;
+}
+
+.profile-pic-view {
+	border-radius: 50%;
+	object-fit: cover;
+	width: 300px;
+	height: 300px;
+}
+
+#send {
+	margin-top: 0px;
+}
+
+.send-message {
+	font-size: 30px;
+}
+
+.secondary-items-container {
+	width: 100%;
+	/*border: 1px dotted gray;*/
+	display: flex;
+	padding-top: 20px;
+	box-sizing: border-box;
+}
+
+#secondary {
+	margin-top: 0px;
+}
+
+.headline-link {
+	font-size: 20px;
+	color: black;
+	font-weight: 600;
+/*	border: 1px dotted gray;*/
+}
+
+.lawyer-articles-container {
+	height: 65px;
+/*	border: 1px dotted gray;*/
+}
+
+.divider-vertical {
+	width: 50px;
+	height: 100%;
+}
+
+.message-form {
+	height: 100px;
+	width: 100%;
+	box-sizing: border-box;
+	resize: none;
+	border: 0.5px solid lightgray;
+	font-size: 14px;
+	margin-bottom: 0px;
+}
+
+.message-form-container {
+	width: 45%;
+	margin-right: 10px;
+/*	border: 1px dotted gray;*/
+}
+.message-form:focus {
+	outline:0;
+}
+
+.background {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+
+.user-container {
+	width: 1000px;
+	margin: auto;
+/*	border: 1px dotted gray;*/
+}
+
+/*Responsive stuff*/
+
+@media(max-width: 1000px) {
+	.user-container {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 5px;
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+@media(max-width: 700px) {
+	.secondary-items-container {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.articles {
+		order: 0;
+	}
+	.message-form-container {
+		order: 1;
+		width: 100%;
+		margin-top: 20px;
+	}
+
+
+	.message-form {
+		width: 90%;
+		margin: auto;
+
+	}
+}
+
+@media(max-width: 550px) {
+	.user-photo-container {
+		display: flex;
+		flex-direction: column;
+	}
+	.user-info-container {
+		margin-top: 20px;
+		margin-left: 0px;
+	}
+}
+
+

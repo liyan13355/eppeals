@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
     if @user.save 
       sign_in @user
-      redirect_to users_path
+      redirect_to home_path
     else
       render template: "users/new"
     end

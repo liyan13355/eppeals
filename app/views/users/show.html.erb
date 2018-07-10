@@ -1,8 +1,8 @@
 <% if current_user.lawyer? %>
-	<div class="lawyer-display">
-	<p> LAWYER PROFILE</p>
+<!-- 	<div class="lawyer-display"> -->
+	<p class="user-type"> Lawyer</p>
 	<div>
-			<a href = "http://localhost:3000/users/<%=current_user.id%>/edit"> Update Profile </a>
+			<a href = "/users/<%=current_user.id%>/edit"> Update Profile </a>
 
 	</div>
 	<h2> <%= current_user.first_name %> <%= current_user.last_name %> </h2>

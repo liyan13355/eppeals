@@ -192,6 +192,7 @@
 	font-size: 13px;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
+	margin-right: 5px;
 }
 
 .divider-horizontal {
@@ -398,6 +399,13 @@ a.answer {
 
 #timeoff {
 	background-color: #84879e;
+}
+
+
+
+.article-submission-info {
+	border: 1px dotted gray;
+	margin-left: 20px;
 }
 
 
