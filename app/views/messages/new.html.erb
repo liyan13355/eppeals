@@ -1,0 +1,61 @@
+<h2> The Beginning of Your Convo With </h2>
+
+<h2><%= User.find(params[:user_id]).first_name %> <%= User.find(params[:user_id]).last_name %> <img src="<%= User.find(params[:user_id]).avatar.thumb.url%>"/></h2>
+
+
+<br/><br/>
+<!-- This div contains each conversation had by the current_user and whichever other user -->
+
+<div>
+
+
+
+	<% @messages.each do |message| %>
+
+				
+		<div >
+			
+			<p>Sent by 
+
+			<strong><a href= "/users/individual/<%=message.sender_id%>">
+				<% if User.find(message.sender_id).first_name == current_user.first_name %>
+
+					You
+
+				<% else %>
+					<%= User.find(message.sender_id).first_name %>
+				<%end%>
+			
+			</a></strong> at <strong><%= message.created_at %></strong>
+
+			</p>
+
+			<p> <%= message.content %></p>
+
+			<hr/>
+		</div>
+
+	<%end %>
+
+<!--Ability to send messages immediately to recipient -->
+	<div>
+
+			<%= form_for [current_user, @message], url: messages_second_create_path, method: :post do |f| %>
+				<p>
+						<%= f.label :Message %><br/> 
+						<%= f.text_field :content %><br/>
+
+						<input type="hidden", value="<%=params[:user_id]%>", name="recipient_id">
+
+					</p>
+					<p> 		<%= f.submit %> </p>
+
+			<% end %>
+
+	</div>
+
+
+		<br/><br/><br/><br/><br/>
+
+
+</div>

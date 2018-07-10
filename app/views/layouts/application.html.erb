@@ -3,7 +3,7 @@
   <head>
     <title>Eppeals</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <%= csp_meta_tag %> 
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application'%>
@@ -184,11 +184,34 @@
 
       </div>
 
+      <% if signed_in? %>
+      <!--This links to the messages page, where the users are able to see their new messages sent by other users -->
+      <div class="dropdown-link">
+
+
+        <a href="/users/<%=current_user.id%>/messages" class="dropdown-tag">messages</a>
+        
+
+      </div>
+      <% end %>
+
+
+      <% if signed_in? && current_user.lawyer? && current_user.verified == true %>
+        
+        <div class="dropdown-link" id = "complaint-dropdown">
+
+          <a href= "http://localhost:3000/articles/new" class="dropdown-tag"> Write A Legal Article </a>
+
+        </div>
+
+      <% end %>
+
+
 
 
       <div class="dropdown-link">
 
-        <a href="#" class="dropdown-tag">articles</a>
+        <a href="/articles" class="dropdown-tag">articles</a>
 
       </div>
 
@@ -309,10 +332,7 @@
 
 
 
-    <% if signed_in? && current_user.lawyer? && current_user.verified == true %>
-      <p> <a href= "http://localhost:3000/articles/new"> Write A Legal Article </a></p>
-
-    <% end %>
+    
 
 
     <%= yield %>
