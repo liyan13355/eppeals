@@ -55,7 +55,7 @@
 
         <img class="news-item-img" src="/annualleave.jpg" />
 
-        <h2><a href="http://localhost:3000/articles/2"><%= Article.find(1).title %></a></h2>
+        <h2><a href="http://localhost:3000/articles/1"><%= Article.find(1).title %></a></h2>
 
         <p class="author-tag">By <strong><%= User.find(Article.find(1).user_id).first_name %> <%= User.find(Article.find(1).user_id).last_name %> </strong></p>
 
@@ -71,7 +71,7 @@
 
         <img class="news-item-img" src="/ringgit.jpg" />
 
-        <h2><a href="http://localhost:3000/articles/3"><%= Article.find(2).title %></a></h2>
+        <h2><a href="http://localhost:3000/articles/2"><%= Article.find(2).title %></a></h2>
 
         <p class="author-tag">By <strong><%= User.find(Article.find(2).user_id).first_name %> <%= User.find(Article.find(2).user_id).last_name %></strong></p>
 

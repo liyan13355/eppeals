@@ -1,0 +1,95 @@
+<h2> Most Recent Convos </h2>
+
+<!-- This div contains each conversation had by the current_user and whichever other user -->
+
+<div>
+
+	<% @messages.each do |message| %>
+
+		<div >
+				
+				<% if message.sender_id == current_user.id%>
+
+					<% if !@array.include?(message.recipient_id) %>
+
+						<% @array << message.recipient_id %>
+
+						<% @recipient_id = message.recipient_id %>
+
+						<% @conversation = Message.where({recipient_id: @recipient_id, sender_id: current_user.id}).or(Message.where({recipient_id: current_user.id, sender_id: @recipient_id})).order(created_at: :asc).limit(3)%>
+
+						<h3><a href="/users/<%=@recipient_id%>/messages/new"> Your Convo</a> With <a href= "/users/individual/<%=message.recipient_id%>"><%= User.find(message.recipient_id).first_name %> <img src= "<%=User.find(message.recipient_id).avatar.thumb.url%>"/></a></h3>
+
+						<% @conversation.each do |x| %>
+
+							<p>Sent by 
+
+							<strong><a href= "/users/individual/<%=x.sender_id%>">
+								<% if User.find(x.sender_id).first_name == current_user.first_name %>
+
+									You
+
+								<% else %>
+									<%= User.find(x.sender_id).first_name %>
+								<%end%>
+							</a></strong> at <strong><%= x.created_at %></strong>
+
+							</p>
+
+							<p> <%= x.content %></p>
+
+							<hr/>
+
+						<%end %>
+
+					<% end %>
+
+				<% end %>
+
+
+
+				<% if message.recipient_id == current_user.id%>
+
+					<% if !@array.include?(message.sender_id) %>
+
+						<% @array << message.sender_id %>
+
+						
+							
+						<% @sender_id = message.sender_id %>
+
+						<% @conversation = Message.where({recipient_id: @sender_id, sender_id: current_user.id}).or(Message.where({recipient_id: current_user.id, sender_id: @sender_id})).order(created_at: :asc).limit(3)%>
+
+						<h3><a href="/users/<%=@sender_id%>/messages/new"> Your Convo</a> With <a href= "/users/individual/<%=message.sender_id%>"><%= User.find(message.sender_id).first_name %> <img src= "<%=User.find(message.sender_id).avatar.thumb.url%>"/></a></h3>
+
+						<% @conversation.each do |x| %>
+
+							<p>Sent by 
+
+							<strong><a href= "/users/individual/<%=x.sender_id%>"><% if User.find(x.sender_id).first_name == current_user.first_name %>
+
+								You
+
+								<% else %>
+
+								<%= User.find(x.sender_id).first_name %><% end %></a></strong> at <strong><%= x.created_at %></strong>
+
+							</p>
+
+							<p><%= x.content %></p>
+
+							<hr/>
+
+						<%end %>
+
+					<% end %>
+
+				<% end %>
+
+		</div>
+
+		<br/><br/><br/><br/><br/>
+
+	<% end %>
+
+</div>

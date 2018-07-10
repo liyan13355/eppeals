@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
-  end
+
+    resources :messages
+  end 
 
   resources :articles do
     resources :comments
@@ -34,6 +36,8 @@ Rails.application.routes.draw do
 post "answers/upvote"
 
 post "queries/timeoff_new"
+
+post "messages/second_create"
 
 end
 

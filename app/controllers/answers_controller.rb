@@ -14,7 +14,8 @@ class AnswersController < ApplicationController
 
 		#not rerendering the page before because maybe it can be done with js/ajax? Difficult
 		#to use with rails in controller because multiple pages utilise the same methods
-		redirect_back
+		
+		redirect_back fallback_location: articles_path
 		
 	end
 
@@ -25,7 +26,7 @@ class AnswersController < ApplicationController
 
 		@answer.update(upvotes: (@upvote_count + 1))
 		
-		redirect_back
+		redirect_back fallback_location: articles_path
 
 	end
 

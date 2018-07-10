@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     before_filter :redirect_signed_in_users, only: [:create, :new]
     skip_before_filter :require_login, only: [:create, :new], raise: false
     skip_before_filter :authorize, only: [:create, :new], raise: false
-  end
+  end 
 
   def new
     @user = User.new
@@ -51,6 +51,8 @@ class UsersController < ApplicationController
   def individual
     @user=User.find(params[:id])
     @articles = Article.where(user_id: @user.id)
+    
+    @message = Message.new
   end
 
   private
@@ -60,7 +62,7 @@ class UsersController < ApplicationController
       "deprecated. Use `redirect_signed_in_users` instead. " +
       "Be sure to update any instances of `skip_before_filter :avoid_sign_in`" +
       " or `skip_before_action :avoid_sign_in` as well"
-    redirect_signed_in_users
+    redirect_signed_in_users 
   end
 
   def redirect_signed_in_users

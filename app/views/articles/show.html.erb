@@ -5,17 +5,18 @@
 		<img src="<%= @author.avatar.thumb.url %>">
 
 	By 
-	<strong> <a href="http://localhost:3000/users/<%=@author.id%>"><%= @author.first_name %> </a></strong>
+	<strong> <a href="/users/individual/<%=@author.id%>"><%= @author.first_name %> </a></strong>
 	<%= @author.last_name %>
 </h3>
 
 <% if signed_in? && current_user.id == @author.id %>
-	<a href = "http://localhost:3000/articles/<%=@article.id%>/edit"> Update Article </a>
+	<a href = "/articles/<%=@article.id%>/edit"> Update Article </a>
 
 	<%= form_tag("/articles/#{@article.id}", method: :delete) do %>
 	    			<input type="submit" value="Delete Article" />
 	<% end %>   
 <%end%>
+
 
 <h1 class= "title">
 <%= @article.title %>
@@ -40,7 +41,7 @@
 	<h4>Post a comment</h4>
 </div>
 
-<!-- this is naturally hidden until the div above is clicked -->
+<!-- this is naturally hidden until the div above is clicked --> 
 <div>
 <%= form_for [@article, @comment] do |f| %>
 <p>
