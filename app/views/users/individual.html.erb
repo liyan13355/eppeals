@@ -47,7 +47,7 @@
 	<h4>Articles By This Lawyer</h4>
 	<br/>
 	<% @articles.each do |x| %>
-		<strong><a href="http://localhost:3000/articles/<%=x.id%>"> <%= x.title %> </a></strong>
+		<strong><a href="/articles/<%=x.id%>"> <%= x.title %> </a></strong>
 	<% end %>
 </div>
 </div>

@@ -29,7 +29,7 @@
 
 	<img src="<%= @author.avatar.thumb.url %>"> 
 
-	<p class= "byline"> By <strong> <a href="/users/<%=@author.id%>"><%= @author.first_name %> </a><a href="/users/<%=@author.id%>"><%= @author.last_name %></strong></a></p>
+	<p class= "byline"> By <strong> <a href="/users/individual/<%=@author.id%>"><%= @author.first_name %> </a><a href="/users/<%=@author.id%>"><%= @author.last_name %></strong></a></p>
 
 </div>
 
@@ -114,7 +114,7 @@ What in tarnation? In both cases, you’re broke, and this is also the proverbia
 <hr/>
 <% @comments.each do |comment|%>
 <h5 class= "User">
-<a href="http://localhost:3000/users/individual/<%=comment.user_id%>"><%= User.find(comment.user_id).first_name %></a>
+<a href="/users/individual/<%=comment.user_id%>"><%= User.find(comment.user_id).first_name %></a>
 </h5>
 
 <p class="date">
