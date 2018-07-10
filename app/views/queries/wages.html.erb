@@ -113,9 +113,11 @@
 
 
 
-
+		<div class="question-title-container">
 		<!--question title -->
-		<h2 class="question-title"><%= query.question %></h2>
+		 <a href = "/queries/<%=query.id %>" class="question-title"><%= query.question%></a>
+
+		</div>
 
 			<div class="question-submission-info">
 
@@ -135,6 +137,8 @@
 
 
 
+
+
 		<!--description of question -->
 
 		<p class="description"> 
@@ -144,17 +148,39 @@
 		
 	</div>
 
-	<div class="answer-question-button">
+
+
+		<% if current_user == nil %>
+
+			<div class="answer-container">
+
+		<div class="question-title-container">
+
+			<h2 class="question-title smaller" id="canyouanswer"> Can you answer this question? </h2>
+
+			<a href="<%= sign_in_path %>"><img class="click-plus" id="clickable-plus" src="/clickableplusnew3.png" /> </a>
+
+		</div>
 
 
 	</div>
+
+	<% end %>
 
 	<!-- this will be a div that only signed in users can see and click on so that they can answer the question -->
 	<% if signed_in? %>
 
 	<div class="answer-container">
 
-		<h2 class="question-title smaller"> Can you answer this question? </h2>
+		<div class="question-title-container">
+
+			<h2 class="question-title smaller" id="canyouanswer"> Can you answer this question? </h2>
+
+			<img class="click-plus" id="clickable-plus" src="/clickableplusnew3.png" />
+
+			<img class="click-plus clickable-minus" src="/clickableminus.png" />
+
+		</div>
 
 		<!-- this form is hidden until the above div is clicked on -->
 
@@ -218,7 +244,7 @@
 
 	<div class="question-submission-info" id="answer-info">
 
-		<img class="avatar" id="embedded" src = "<%=User.find(answer.user_id).avatar.thumb.url%>"/>
+		<img class="avatar" id="embeddedanswer" src = "<%=User.find(answer.user_id).avatar.thumb.url%>"/>
 
 			<a href="/users/individual/<%=query.user_id%>" class="question-submission-info-item"> Submitted by <strong> <%= User.find(answer.user_id).first_name %></strong> </a>
 
@@ -256,10 +282,11 @@
 		<p class="upvote-number"><%= answer.upvotes %> upvotes</p>
 
 		</div>
+		<div class="divider-horizontal"></div>
 
+		</div>
 
-
-			<div class="divider-horizontal"></div>
+		
 
 
 
@@ -267,7 +294,7 @@
 		<div class="divider-horizontal"></div>
 		<div class="divider-horizontal"></div> -->
 
-</div>
+
 
 	
 
@@ -288,6 +315,23 @@
 
 
 <% end %>
+
+
+<script>
+      $(".answer-form").hide();
+      // $("#clickable-minus").hide();
+    // $("#filler-mobile").hide();
+
+    $(".click-plus").on("click", function(e){
+        // e.preventDefault();
+        $(".answer-form").toggle();
+        // $("#clickable-plus").hide();
+        // $('.clickable-minus').show();
+        console.log('click');
+
+
+    });
+  </script>
 
 
 
