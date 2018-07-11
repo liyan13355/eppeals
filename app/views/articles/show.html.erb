@@ -32,7 +32,7 @@
 
 	<div class="author-container">
 
-		<a href="/users/indivdual/<%= current_user.id %>"><img class ="avatar" src="<%= @author.avatar.thumb.url %>"></a>
+		<a href="/users/indivdual/<%= @author.id %>"><img class ="avatar" src="<%= @author.avatar.thumb.url %>"></a>
 
         <p><a class="author-tag" href="/users/individual/<%= Article.second.user_id %>">By <strong><%= User.find(Article.find(2).user_id).first_name %> <%= User.find(Article.find(2).user_id).last_name %> </strong></a></p>
 
