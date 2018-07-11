@@ -23,7 +23,7 @@
 
 
 <!-- BYLINE -->
-
+<div class="divider-horizontal"></div>
 <div class = "byline-container">
 
 
@@ -63,6 +63,8 @@
 
 </div>
 
+<div class="divider-horizontal"></div>
+
 
 <div class="article-container">
 
@@ -95,46 +97,54 @@ What in tarnation? In both cases, you’re broke, and this is also the proverbia
 
 
 
-
+<div class="comments-box">
 <% if signed_in? %>
-<div> 
-	<h4>Post a comment</h4>
-</div>
 
 <!-- this is naturally hidden until the div above is clicked --> 
-<div>
+<div class="new-comment-container">
+
+	<% if signed_in? %>
+<div> 
+	<p class="post-comment">Post a comment</p>
+</div>
 <%= form_for [@article, @comment] do |f| %>
 <p>
-		<%= f.label :content %><br/> 
-		<%= f.text_field :content %><br/>
+		<%= f.label :type_your_message_below, :class => 'user-type'%><br/> 
+		<%= f.text_area :content, :class => 'message-form', :id => 'comment-box' %><br/>
 
 		<% f.hidden_field :user_id, :value => current_user.id %>
 		<% f.hidden_field :article_id, :value => @article.id %>
 
 	</p>
-	<p> 		<%= f.submit %> </p>
+	<p> <%= f.submit :'Post your comment', :class => 'button', :id => 'send' %>  </p>
+
+<% end %>
 
 <% end %>
 </div>
-<% end %>
+
+</div>
 
 <!-- Comments Section starts here -->
-<div>
-<h1>Comments</h1>
-<hr/>
+<div class="comments-box">
+<p class="post-comment">Comments</p>
+<div class="divider-horizontal"></div>
 <% @comments.each do |comment|%>
-<h5 class= "User">
-<a href="/users/individual/<%=comment.user_id%>"><%= User.find(comment.user_id).first_name %></a>
-</h5>
+<div class="question-submission-info">
+	<a href="/users/individual/<%=comment.user_id%>" class="question-submission-info-item" id="comments-info">Posted by <strong><%= User.find(comment.user_id).first_name %></strong></a>
 
-<p class="date">
-	Submitted <%= time_ago_in_words(comment.created_at) %> ago
-</p>
+
+<p class="question-submission-info-item">Submitted <strong><%= time_ago_in_words(comment.created_at) %> ago</strong> </p>
+
+</div>
+
 
 <p class="content">
 	<%= comment.content %>
 </p>
-<hr/>
+<div class="divider-horizontal"></div>
+<% end %>
+
 <% end %>
 
 </div>
