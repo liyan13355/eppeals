@@ -58,7 +58,7 @@
 
 <!-- if the user is signed in, they can see this option -->
 
-<% if signed_in? %>
+
 	<!--if the user clicks on this div below, a popup of a form will appear for them to write their query -->
 
 	<div class="content-container"> 
@@ -67,9 +67,12 @@
 
 		<h4 class="legal-act-header"> Post your query here </h4>
 
+
+
+
 	<!-- this is the div that should be naturally hidden until the current user clicks on div above. Maybe this can pop up above the page, and the rest of the page will somewhat fade behind it, lightbox-like style? -->
 
-
+<% if signed_in? %>
 	<%= form_for [@query] do |f| %>
 		<p>
 				<%= f.label :"question Title"%><br/> 
@@ -92,7 +95,10 @@
 
 	</div>
 
-<% end %>
+<% else %> 
+		<p> You must be <a href="<%= sign_in_path %>">Signed in</a> to post a query </p>
+
+		<% end %>
 
 
 

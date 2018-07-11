@@ -3,6 +3,7 @@ class QueriesController < ApplicationController
 
 		@top_queries = Query.featured	
 		@answer = Answer.new	 
+		@query = Query.new
 
 	end
 
