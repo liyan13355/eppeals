@@ -1,12 +1,24 @@
-<h2> The Beginning of Your Convo With </h2>
+<!DOCTYPE html> 
+<html>
+  <head>
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
+	</head>
+
+  <body>
+  	<br/><br/>
+<div class="d-flex justify-content-center">
+
+<h2 > The Beginning of Your Convo With </h2>
+</div>
+<div class="d-flex justify-content-center">
 <h2><%= User.find(params[:user_id]).first_name %> <%= User.find(params[:user_id]).last_name %> <img src="<%= User.find(params[:user_id]).avatar.thumb.url%>"/></h2>
+</div>
 
-
-<br/><br/>
+<br/>
 <!-- This div contains each conversation had by the current_user and whichever other user -->
 
-<div>
+<div class="jumbotron container">
 
 
 
@@ -14,7 +26,7 @@
 
 				
 		<div >
-			
+		
 			<p>Sent by 
 
 			<strong><a href= "/users/individual/<%=message.sender_id%>">
@@ -30,11 +42,11 @@
 
 			</p>
 
-			<p> <%= message.content %></p>
+			<p class="lead"> <%= message.content %></p>
 
-			<hr/>
+			 <hr class="my-2">
 		</div>
-
+		<br/>
 	<%end %>
 
 <!--Ability to send messages immediately to recipient -->
@@ -55,7 +67,10 @@
 	</div>
 
 
-		<br/><br/><br/><br/><br/>
+		<br/><br/><br/>
 
 
 </div>
+
+</body>
+</html>

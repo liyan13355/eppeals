@@ -1,12 +1,22 @@
-<h2> Most Recent Convos </h2>
+<!DOCTYPE html> 
+<html>
+  <head>
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
+	</head>
+
+  <body>
+<div class="d-flex justify-content-center" >
+<h2> Most Recent Convos </h2>
+</div>
+<br/>
 <!-- This div contains each conversation had by the current_user and whichever other user -->
 
-<div>
+<div class = "d-flex justify-content-between">
 
 	<% @messages.each do |message| %>
 
-		<div >
+		<div class = "pl-1">
 				
 				<% if message.sender_id == current_user.id%>
 
@@ -19,13 +29,13 @@
 						<% @conversation = Message.where({recipient_id: @recipient_id, sender_id: current_user.id}).or(Message.where({recipient_id: current_user.id, sender_id: @recipient_id})).order(created_at: :asc).limit(3)%>
 
 						<br/>
-						<h3><a href="/users/<%=@recipient_id%>/messages/new"> Your Convo</a> With <a href= "/users/individual/<%=message.recipient_id%>"><%= User.find(message.recipient_id).first_name %> <img src= "<%=User.find(message.recipient_id).avatar.thumb.url%>"/></a></h3>
+						<h3 class = "text-center"><a href="/users/<%=@recipient_id%>/messages/new" > Your Convo</a> With <a href= "/users/individual/<%=message.recipient_id%>" class= "text-muted"><%= User.find(message.recipient_id).first_name %> <img src= "<%=User.find(message.recipient_id).avatar.thumb.url%>"/></a></h3>
 
 						<% @conversation.each do |x| %>
+							<div class = "pl-1">
+							<p class="text-black-50">Sent by 
 
-							<p>Sent by 
-
-							<strong><a href= "/users/individual/<%=x.sender_id%>">
+							<strong><a href= "/users/individual/<%=x.sender_id%>" class = "text-muted">
 								<% if User.find(x.sender_id).first_name == current_user.first_name %>
 
 									You
@@ -38,7 +48,7 @@
 							</p>
 
 							<p> <%= x.content %></p>
-
+						</div>
 							<hr/>
 
 						<%end %>
@@ -61,13 +71,13 @@
 
 						<% @conversation = Message.where({recipient_id: @sender_id, sender_id: current_user.id}).or(Message.where({recipient_id: current_user.id, sender_id: @sender_id})).order(created_at: :asc).limit(3)%>
 						<br/>
-						<h3><a href="/users/<%=@sender_id%>/messages/new"> Your Convo</a> With <a href= "/users/individual/<%=message.sender_id%>"><%= User.find(message.sender_id).first_name %> <img src= "<%=User.find(message.sender_id).avatar.thumb.url%>"/></a></h3>
+						<h3 class = "text-center"><a href="/users/<%=@sender_id%>/messages/new"> Your Convo</a> With <a href= "/users/individual/<%=message.sender_id%>" class = "text-muted"><%= User.find(message.sender_id).first_name %> <img src= "<%=User.find(message.sender_id).avatar.thumb.url%>"/></a></h3>
 
 						<% @conversation.each do |x| %>
+							<div class = "pl-1">
+							<p class="text-black-50">Sent by 
 
-							<p>Sent by 
-
-							<strong><a href= "/users/individual/<%=x.sender_id%>"><% if User.find(x.sender_id).first_name == current_user.first_name %>
+							<strong><a href= "/users/individual/<%=x.sender_id%>" class = "text-muted"><% if User.find(x.sender_id).first_name == current_user.first_name %>
 
 								You
 
@@ -78,7 +88,7 @@
 							</p>
 
 							<p><%= x.content %></p>
-
+						</div>
 							<hr/>
 
 						<%end %>
@@ -94,3 +104,6 @@
 	<% end %>
 
 </div>
+
+</body>
+</html>
