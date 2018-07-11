@@ -21,7 +21,15 @@
 
 	</div>
 
+<% if signed_in? && current_user.lawyer? && current_user.verified == true %>
+        
+        
+		<p class="user-type">
+          <a href= "/articles/new" class="dropdown-tag"> Write A Legal Article </a>
+    </p>
+        
 
+<% end %>
 
 
 	<div class="user-photo-container">
