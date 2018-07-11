@@ -21,7 +21,7 @@
 
 	</div>
 
-<% if signed_in? && current_user.lawyer? && current_user.verified == true %>
+<% if signed_in? && current_user.lawyer? && current_user.verified == true && current_user.email == @user.email%>
         
         
 		<p class="user-type">
@@ -30,6 +30,14 @@
         
 
 <% end %>
+
+<% if signed_in? && current_user.email == @user.email %>
+	<p class = "user-type">
+			<a href = "/users/<%=current_user.id%>/edit"> Update Profile </a>
+
+	</p>
+<% end %>
+
 
 
 	<div class="user-photo-container">
@@ -161,6 +169,12 @@
 
 	</div>
 
+	<% if signed_in? && current_user.email == @user.email %>
+		<div>
+				<a href = "/users/<%=current_user.id%>/edit"> Update Profile </a>
+
+		</div>
+	<% end %>
 
 	<div class="user-photo-container">
 
