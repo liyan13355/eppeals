@@ -5,13 +5,14 @@
 
 .article-container {
 	width: 1000px;
-	border: 1px dotted gray;
+/*	border: 1px dotted gray;*/
 	margin: auto;
+	padding-top: 50px;
 }
 
 .byline-container {
 	width: 100%;
-	border: 1px dotted gray;
+/*	border: 1px dotted gray;*/
 	display: flex;
 }
 
@@ -68,6 +69,28 @@
 	height: 400px;
 }
 
+.comments-box {
+	width: 1000px;
+	margin: auto;
+/*	border: 1px dotted gray;*/
+}
+
+.new-comment-container {
+	width: 100%;
+}
+
+.post-comment {
+	font-size: 30px;
+	font-weight: 400;
+}
+
+#comment-box {
+	width: 300px;
+}
+
+#comments-info {
+	margin-left: -60px;
+}
 
 
 
@@ -75,3 +98,22 @@
 
 
 /*responsive styles*/
+
+
+@media(max-width: 999px) {
+	.article-container {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 5px;
+	}
+
+	.comments-box {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 5px;
+	}
+
+	.byline-container {
+		width: 200px;
+	}
+}
