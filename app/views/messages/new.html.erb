@@ -14,14 +14,14 @@
 <div class="d-flex justify-content-center">
 <h2><%= User.find(params[:user_id]).first_name %> <%= User.find(params[:user_id]).last_name %> <img src="<%= User.find(params[:user_id]).avatar.thumb.url%>"/></h2>
 </div>
-
+<div class= "ml-3 position-fixed"><a href = "#messages_form">	<img src = "https://image.flaticon.com/icons/svg/37/37472.svg" height = "40" width="40" /> </a></div>
 <br/>
 <!-- This div contains each conversation had by the current_user and whichever other user -->
 
 <div class="jumbotron container">
 
 
-
+	<div>
 	<% @messages.each do |message| %>
 
 				
@@ -48,8 +48,10 @@
 		</div>
 		<br/>
 	<%end %>
-
+</div>
 <!--Ability to send messages immediately to recipient -->
+	
+	<div><a id = "messages_form"></a></div>
 	<div>
 
 			<%= form_for [current_user, @message], url: messages_second_create_path, method: :post do |f| %>
