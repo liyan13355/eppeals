@@ -67,7 +67,7 @@
 }
 
 .profile-pic-view {
-	border-radius: 50%;
+/*	border-radius: 50%;*/
 	object-fit: cover;
 	width: 300px;
 	height: 300px;
